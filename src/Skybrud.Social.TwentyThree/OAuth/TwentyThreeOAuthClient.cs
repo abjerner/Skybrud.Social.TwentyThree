@@ -1,0 +1,85 @@
+﻿using System;
+using Skybrud.Essentials.Common;
+using Skybrud.Social.Http;
+using Skybrud.Social.OAuth;
+using Skybrud.Social.TwentyThree.Endpoints.Raw;
+
+namespace Skybrud.Social.TwentyThree.OAuth {
+
+    public class TwentyThreeOAuthClient : SocialOAuthClient {
+
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the name to be used for all API requests - eg. <code>videos.skybrud.dk</code>.
+        /// </summary>
+        public string HostName { get; set; }
+
+        /// <summary>
+        /// Gets a reference to the raw <strong>Photos</strong> endpoint.
+        /// </summary>
+        public TwentyThreePhotosRawEndpoint Photos { get; }
+
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TwentyThreeOAuthClient"/> class.
+        /// </summary>
+        public TwentyThreeOAuthClient() : this(null, null, null, null, null) { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TwentyThreeOAuthClient"/> class.
+        /// </summary>
+        /// <param name="consumerKey">The comsumer key of your application.</param>
+        /// <param name="consumerSecret">The consumer secret of your application.</param>
+        /// <param name="token">The access token of the user.</param>
+        /// <param name="tokenSecret">The access token secret of the user.</param>
+        /// <param name="callback">The callback URI used for authentication.</param>
+        public TwentyThreeOAuthClient(string consumerKey, string consumerSecret, string token, string tokenSecret, string callback) {
+
+            // Common properties
+            ConsumerKey = consumerKey;
+            ConsumerSecret = consumerSecret;
+            Token = token;
+            TokenSecret = tokenSecret;
+            Callback = callback;
+
+            // Endpoints
+            Photos = new TwentyThreePhotosRawEndpoint(this);
+
+            // Specific to Video23
+            RequestTokenUrl = "http://api.visualplatform.net/oauth/request_token";
+            AuthorizeUrl = "http://api.visualplatform.net/oauth/access_token";
+            AccessTokenUrl = "http://api.visualplatform.net/oauth/authorize";
+
+        }
+
+        #endregion
+
+        #region Member methods
+
+        protected override void PrepareHttpRequest(SocialHttpRequest request) {
+
+            // Should we append the domain and schema to the URL?
+            if (request.Url.StartsWith("/api/")) {
+                if (String.IsNullOrWhiteSpace(HostName)) throw new PropertyNotSetException(nameof(HostName));
+                request.Url = "https://" + HostName + request.Url;
+            }
+
+            // Append "raw" to the query string so we can get a proper JSON response
+            if (request.QueryString == null) request.QueryString = new SocialHttpQueryString();
+            request.QueryString.Add("format", "json");
+            request.QueryString.Add("raw", String.Empty);
+
+            // Call the base method to handle OAuth 1.0a logic
+            base.PrepareHttpRequest(request);
+
+        }
+
+        #endregion
+
+    }
+
+}
