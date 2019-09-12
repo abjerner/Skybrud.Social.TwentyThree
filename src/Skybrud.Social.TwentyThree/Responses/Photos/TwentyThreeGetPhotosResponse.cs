@@ -12,7 +12,7 @@ namespace Skybrud.Social.TwentyThree.Responses.Photos {
 
         #region Constructors
 
-            private TwentyThreeGetPhotosResponse(SocialHttpResponse response) : base(response) {
+        private TwentyThreeGetPhotosResponse(SocialHttpResponse response) : base(response) {
             
             // Validate the response
             ValidateResponse(response, out JObject body);
