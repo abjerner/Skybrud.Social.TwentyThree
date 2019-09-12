@@ -1,5 +1,5 @@
-﻿using Skybrud.Social.Http;
-using Skybrud.Social.Interfaces.Http;
+﻿using Skybrud.Essentials.Http.Collections;
+using Skybrud.Essentials.Http.Options;
 
 namespace Skybrud.Social.TwentyThree.Options.Photos {
 
@@ -41,7 +41,7 @@ namespace Skybrud.Social.TwentyThree.Options.Photos {
         
         public IHttpQueryString GetQueryString() {
 
-            IHttpQueryString query = new SocialHttpQueryString();
+            IHttpQueryString query = new HttpQueryString();
 
             if (string.IsNullOrWhiteSpace(PhotoId) == false) query.Add("photo_id", PhotoId);
             if (string.IsNullOrWhiteSpace(Token) == false) query.Add("token", Token);

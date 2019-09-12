@@ -1,8 +1,7 @@
-﻿using System.Net;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
+using Skybrud.Essentials.Http;
 using Skybrud.Essentials.Json;
 using Skybrud.Essentials.Json.Extensions;
-using Skybrud.Social.Http;
 using Skybrud.Social.TwentyThree.Exceptions;
 using Skybrud.Social.TwentyThree.Models;
 
@@ -11,15 +10,15 @@ namespace Skybrud.Social.TwentyThree.Responses {
     /// <summary>
     /// Class representing a response from the Twenty Three API.
     /// </summary>
-    public class TwentyThreeResponse : SocialResponse {
+    public class TwentyThreeResponse : HttpResponseBase {
 
         #region Constructors
 
         /// <summary>
         /// Initializes a new instance based on the specified <paramref name="response"/>.
         /// </summary>
-        /// <param name="response">The instance of <see cref="SocialHttpResponse"/> representing the raw response.</param>
-        protected TwentyThreeResponse(SocialHttpResponse response) : base(response) { }
+        /// <param name="response">The instance of <see cref="IHttpResponse"/> representing the raw response.</param>
+        protected TwentyThreeResponse(IHttpResponse response) : base(response) { }
 
         #endregion
 
@@ -30,7 +29,7 @@ namespace Skybrud.Social.TwentyThree.Responses {
         /// </summary>
         /// <param name="response">The response to be validated.</param>
         /// <param name="body">An instacne of <see cref="JObject"/> representing the response body.</param>
-        public static void ValidateResponse(SocialHttpResponse response, out JObject body) {
+        public static void ValidateResponse(IHttpResponse response, out JObject body) {
 
             // The API always returns a 200 status code - even for errors
 
@@ -67,8 +66,8 @@ namespace Skybrud.Social.TwentyThree.Responses {
         /// <summary>
         /// Initializes a new instance based on the specified <paramref name="response"/>.
         /// </summary>
-        /// <param name="response">The instance of <see cref="SocialHttpResponse"/> representing the raw response.</param>
-        protected TwentyThreeResponse(SocialHttpResponse response) : base(response) { }
+        /// <param name="response">The instance of <see cref="IHttpResponse"/> representing the raw response.</param>
+        protected TwentyThreeResponse(IHttpResponse response) : base(response) { }
 
         #endregion
 

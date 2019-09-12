@@ -1,6 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json.Linq;
-using Skybrud.Social.Http;
+using Skybrud.Essentials.Http;
 using Skybrud.Social.TwentyThree.Models.Photos;
 
 namespace Skybrud.Social.TwentyThree.Responses.Photos {
@@ -12,7 +12,7 @@ namespace Skybrud.Social.TwentyThree.Responses.Photos {
 
         #region Constructors
 
-        private TwentyThreeGetPhotosResponse(SocialHttpResponse response) : base(response) {
+        private TwentyThreeGetPhotosResponse(IHttpResponse response) : base(response) {
             
             // Validate the response
             ValidateResponse(response, out JObject body);
@@ -31,7 +31,7 @@ namespace Skybrud.Social.TwentyThree.Responses.Photos {
         /// </summary>
         /// <param name="response">The response to be parsed.</param>
         /// <returns>An instance of <see cref="TwentyThreeGetPhotosResponse"/> representing the response.</returns>
-        public static TwentyThreeGetPhotosResponse ParseResponse(SocialHttpResponse response) {
+        public static TwentyThreeGetPhotosResponse ParseResponse(IHttpResponse response) {
             if (response == null) throw new ArgumentNullException(nameof(response));
             return new TwentyThreeGetPhotosResponse(response);
         }

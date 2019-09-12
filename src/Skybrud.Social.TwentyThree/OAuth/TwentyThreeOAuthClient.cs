@@ -1,12 +1,13 @@
 ﻿using System;
 using Skybrud.Essentials.Common;
-using Skybrud.Social.Http;
-using Skybrud.Social.OAuth;
+using Skybrud.Essentials.Http;
+using Skybrud.Essentials.Http.Collections;
+using Skybrud.Essentials.Http.OAuth;
 using Skybrud.Social.TwentyThree.Endpoints.Raw;
 
 namespace Skybrud.Social.TwentyThree.OAuth {
 
-    public class TwentyThreeOAuthClient : SocialOAuthClient {
+    public class TwentyThreeOAuthClient : OAuthClient {
 
         #region Properties
 
@@ -60,18 +61,18 @@ namespace Skybrud.Social.TwentyThree.OAuth {
 
         #region Member methods
 
-        protected override void PrepareHttpRequest(SocialHttpRequest request) {
+        protected override void PrepareHttpRequest(IHttpRequest request) {
 
             // Should we append the domain and schema to the URL?
             if (request.Url.StartsWith("/api/")) {
-                if (String.IsNullOrWhiteSpace(HostName)) throw new PropertyNotSetException(nameof(HostName));
+                if (string.IsNullOrWhiteSpace(HostName)) throw new PropertyNotSetException(nameof(HostName));
                 request.Url = "https://" + HostName + request.Url;
             }
 
             // Append "raw" to the query string so we can get a proper JSON response
-            if (request.QueryString == null) request.QueryString = new SocialHttpQueryString();
+            if (request.QueryString == null) request.QueryString = new HttpQueryString();
             request.QueryString.Add("format", "json");
-            request.QueryString.Add("raw", String.Empty);
+            request.QueryString.Add("raw", string.Empty);
 
             // Call the base method to handle OAuth 1.0a logic
             base.PrepareHttpRequest(request);
