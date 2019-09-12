@@ -19,8 +19,8 @@
   
   <PropertyGroup>
     <PackageTags>Twenty Three, Skybrud, Social, OAuth, JSON</PackageTags>
-    <PackageLicenseUrl>https://github.com/abjerner/Skybrud.Social.Twitter.TwentyThree/blob/master/LICENSE.md</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/abjerner/Skybrud.Social.Twitter.TwentyThree</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/abjerner/Skybrud.Social.TwentyThree/blob/master/LICENSE.md</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/abjerner/Skybrud.Social.TwentyThree</PackageProjectUrl>
     <PackageIconUrl>http://www.skybrud.dk/img/5431sk/icon/favicon.ico</PackageIconUrl>
   </PropertyGroup>
 
