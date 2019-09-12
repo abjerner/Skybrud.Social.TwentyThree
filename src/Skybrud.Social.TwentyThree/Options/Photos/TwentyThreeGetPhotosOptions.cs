@@ -1,5 +1,4 @@
-﻿using System;
-using Skybrud.Social.Http;
+﻿using Skybrud.Social.Http;
 using Skybrud.Social.Interfaces.Http;
 
 namespace Skybrud.Social.TwentyThree.Options.Photos {
@@ -12,6 +11,16 @@ namespace Skybrud.Social.TwentyThree.Options.Photos {
         /// Gets or sets the ID of a photo. If specified, only the photo or video with this ID is returned.
         /// </summary>
         public string PhotoId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the token for a specific video/photo or an album − depending on whether <c>photo_id</c> or
+        /// <c>album_id</c> is set.
+        ///
+        /// Specifying either an <c>album_id/token</c> or a <c>photo_id/token</c> will give the client access to
+        /// information about the <c>video/photo/album/channel</c> irregardless of permission level. When requesting a
+        /// single photo object, tokens can be explicitly time-limited.
+        /// </summary>
+        public string Token { get; set; }
 
         /// <summary>
         /// Gets or sets whether videos should be included in the response.
@@ -34,7 +43,8 @@ namespace Skybrud.Social.TwentyThree.Options.Photos {
 
             IHttpQueryString query = new SocialHttpQueryString();
 
-            if (String.IsNullOrWhiteSpace(PhotoId) == false) query.Add("photo_id", PhotoId);
+            if (string.IsNullOrWhiteSpace(PhotoId) == false) query.Add("photo_id", PhotoId);
+            if (string.IsNullOrWhiteSpace(Token) == false) query.Add("token", Token);
 
             switch (Video) {
                 case TwentyThreeVideoParameter.OnlyVideos:
