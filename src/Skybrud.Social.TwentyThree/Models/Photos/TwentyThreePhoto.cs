@@ -22,9 +22,9 @@ namespace Skybrud.Social.TwentyThree.Models.Photos {
 
         public string AbsoluteUrl { get; }
 
-        public EssentialsDateTime PublishDate { get; }
+        public EssentialsTime PublishDate { get; }
 
-        public EssentialsDateTime CreationDate { get; }
+        public EssentialsTime CreationDate { get; }
 
         public TwentyThreeThumbnail Original { get; }
 
@@ -84,8 +84,8 @@ namespace Skybrud.Social.TwentyThree.Models.Photos {
             Id = obj.GetString("photo_id");
             Title = obj.GetString("title");
             IsPublished = obj.GetString("published_p", StringUtils.ParseBoolean);
-            PublishDate = obj.GetInt32("publish_date_epoch", EssentialsDateTime.FromUnixTimestamp);
-            CreationDate = obj.GetInt32("creation_date_epoch", EssentialsDateTime.FromUnixTimestamp);
+            PublishDate = obj.GetInt32("publish_date_epoch", EssentialsTime.FromUnixTimestamp);
+            CreationDate = obj.GetInt32("creation_date_epoch", EssentialsTime.FromUnixTimestamp);
             ViewCount = obj.GetInt64("view_count");
             AbsoluteUrl = obj.GetString("absolute_url");
             VideoLength = obj.GetDouble("video_length", TimeSpan.FromSeconds);
