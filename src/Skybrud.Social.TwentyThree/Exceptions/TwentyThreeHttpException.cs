@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Net;
 using Skybrud.Essentials.Http;
+using Skybrud.Essentials.Http.Exceptions;
 using Skybrud.Social.TwentyThree.Models;
 
 namespace Skybrud.Social.TwentyThree.Exceptions {
     
-    public class TwentyThreeHttpException : Exception {
+    public class TwentyThreeHttpException : Exception, IHttpException {
 
         #region Properties
 
