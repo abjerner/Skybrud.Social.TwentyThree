@@ -12,7 +12,7 @@ namespace Skybrud.Social.TwentyThree.OAuth {
         #region Properties
 
         /// <summary>
-        /// Gets or sets the name to be used for all API requests - eg. <code>videos.skybrud.dk</code>.
+        /// Gets or sets the name to be used for all API requests - eg. <c>videos.skybrud.dk</c>.
         /// </summary>
         public string HostName { get; set; }
 
