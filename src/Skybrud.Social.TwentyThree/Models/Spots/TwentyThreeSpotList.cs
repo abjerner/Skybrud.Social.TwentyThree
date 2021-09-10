@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
-using Skybrud.Social.TwentyThree.Models.Models;
+using Skybrud.Social.TwentyThree.Models.Photos;
 
-namespace Skybrud.Social.TwentyThree.Models.Photos {
+namespace Skybrud.Social.TwentyThree.Models.Spots {
 
     public class TwentyThreeSpotList : TwentyThreeObject {
 

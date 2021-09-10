@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Http;
 using Skybrud.Social.TwentyThree.Models.Photos;
+using Skybrud.Social.TwentyThree.Models.Spots;
 
 namespace Skybrud.Social.TwentyThree.Responses.Spots {
 
