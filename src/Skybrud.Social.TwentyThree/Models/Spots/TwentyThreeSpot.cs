@@ -39,7 +39,7 @@ namespace Skybrud.Social.TwentyThree.Models.Spots {
             Type = obj.GetString("spot_type");
             Design = obj.GetString("spot_design");
             Layout = obj.GetString("spot_layout");
-            Selection = obj.GetString("selection");
+            Selection = obj.GetString("spot_selection");
             VideoCount = obj.GetInt32("video_count");
             Token = obj.GetString("token");
             IncludeHtml = obj.GetString("include_html");
