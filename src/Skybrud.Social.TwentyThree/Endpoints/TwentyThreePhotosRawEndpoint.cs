@@ -37,7 +37,7 @@ namespace Skybrud.Social.TwentyThree.Endpoints {
         ///     <cref>https://www.twentythree.net/api/photo-list</cref>
         /// </see>
         public IHttpResponse GetList() {
-            return Client.Get("/api/photo/list");
+            return GetList(new TwentyThreeGetPhotosOptions());
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Skybrud.Social.TwentyThree.Endpoints {
         /// </see>
         public IHttpResponse GetList(TwentyThreeGetPhotosOptions options) {
             if (options == null) throw new ArgumentNullException(nameof(options));
-            return Client.Get("/api/photo/list", options);
+            return Client.GetResponse(options);
         }
 
         #endregion

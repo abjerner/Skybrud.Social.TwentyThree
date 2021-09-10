@@ -1,9 +1,10 @@
-﻿using Skybrud.Essentials.Http.Collections;
+﻿using Skybrud.Essentials.Http;
+using Skybrud.Essentials.Http.Collections;
 using Skybrud.Essentials.Http.Options;
 
 namespace Skybrud.Social.TwentyThree.Options.Photos {
 
-    public class TwentyThreeGetPhotosOptions : IHttpGetOptions {
+    public class TwentyThreeGetPhotosOptions : IHttpRequestOptions {
 
         #region Properties
 
@@ -59,6 +60,29 @@ namespace Skybrud.Social.TwentyThree.Options.Photos {
             if (Size > 0) query.Add("size", Size);
 
             return query;
+
+        }
+
+        public IHttpRequest GetRequest() {
+
+            IHttpQueryString query = new HttpQueryString();
+
+            if (string.IsNullOrWhiteSpace(PhotoId) == false) query.Add("photo_id", PhotoId);
+            if (string.IsNullOrWhiteSpace(Token) == false) query.Add("token", Token);
+
+            switch (Video) {
+                case TwentyThreeVideoParameter.OnlyVideos:
+                    query.Add("video_p", "1");
+                    break;
+                case TwentyThreeVideoParameter.IgnoreVideos:
+                    query.Add("video_p", "0");
+                    break;
+            }
+
+            if (Page > 0) query.Add("p", Page);
+            if (Size > 0) query.Add("size", Size);
+
+            return HttpRequest.Get("/api/photo/list", query);
 
         }
         
