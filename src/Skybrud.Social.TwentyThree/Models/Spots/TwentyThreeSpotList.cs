@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Social.TwentyThree.Models.Photos;
+using Skybrud.Social.TwentyThree.Models.Sites;
 
 namespace Skybrud.Social.TwentyThree.Models.Spots {
 
@@ -18,6 +19,8 @@ namespace Skybrud.Social.TwentyThree.Models.Spots {
 
         public int TotalCount { get; }
 
+        public TwentyThreeSite Site { get; }
+
         #endregion
 
         #region Constructors
@@ -32,6 +35,7 @@ namespace Skybrud.Social.TwentyThree.Models.Spots {
             Size = obj.GetInt32("size");
             Offset = obj.GetInt32("offset");
             TotalCount = obj.GetInt32("total_count");
+            Site = obj.GetObject("site", TwentyThreeSite.Parse);
         }
 
         #endregion
