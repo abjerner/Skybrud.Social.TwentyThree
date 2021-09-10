@@ -40,29 +40,6 @@ namespace Skybrud.Social.TwentyThree.Options.Photos {
 
         #region Member methods
         
-        public IHttpQueryString GetQueryString() {
-
-            IHttpQueryString query = new HttpQueryString();
-
-            if (string.IsNullOrWhiteSpace(PhotoId) == false) query.Add("photo_id", PhotoId);
-            if (string.IsNullOrWhiteSpace(Token) == false) query.Add("token", Token);
-
-            switch (Video) {
-                case TwentyThreeVideoParameter.OnlyVideos:
-                    query.Add("video_p", "1");
-                    break;
-                case TwentyThreeVideoParameter.IgnoreVideos:
-                    query.Add("video_p", "0");
-                    break;
-            }
-
-            if (Page > 0) query.Add("p", Page);
-            if (Size > 0) query.Add("size", Size);
-
-            return query;
-
-        }
-
         public IHttpRequest GetRequest() {
 
             IHttpQueryString query = new HttpQueryString();
