@@ -3,7 +3,7 @@ using Skybrud.Essentials.Http;
 using Skybrud.Social.TwentyThree.OAuth;
 using Skybrud.Social.TwentyThree.Options.Photos;
 
-namespace Skybrud.Social.TwentyThree.Endpoints.Raw {
+namespace Skybrud.Social.TwentyThree.Endpoints {
 
     /// <summary>
     /// Class representing the raw implementation of the <strong>Photos</strong> endpoint.

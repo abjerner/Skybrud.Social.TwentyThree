@@ -4,7 +4,7 @@ using Skybrud.Social.TwentyThree.OAuth;
 
 namespace Skybrud.Social.TwentyThree {
 
-    public class TwentyThreeService {
+    public class TwentyThreeHttpService {
 
         #region Properties
 
@@ -27,7 +27,7 @@ namespace Skybrud.Social.TwentyThree {
 
         #region Constructors
 
-        private TwentyThreeService(TwentyThreeOAuthClient client) {
+        private TwentyThreeHttpService(TwentyThreeOAuthClient client) {
 
             // Set the client
             Client = client;
@@ -46,10 +46,10 @@ namespace Skybrud.Social.TwentyThree {
         /// Initializes a new instance from the specified <see cref="TwentyThreeOAuthClient"/>.
         /// </summary>
         /// <param name="client">An instance of <see cref="TwentyThreeOAuthClient"/>.</param>
-        /// <returns>A new instance of <see cref="TwentyThreeService"/>.</returns>
-        public static TwentyThreeService CreateFromOAuthClient(TwentyThreeOAuthClient client) {
+        /// <returns>A new instance of <see cref="TwentyThreeHttpService"/>.</returns>
+        public static TwentyThreeHttpService CreateFromOAuthClient(TwentyThreeOAuthClient client) {
             if (client == null) throw new ArgumentNullException(nameof(client));
-            return new TwentyThreeService(client);
+            return new TwentyThreeHttpService(client);
         }
 
         #endregion

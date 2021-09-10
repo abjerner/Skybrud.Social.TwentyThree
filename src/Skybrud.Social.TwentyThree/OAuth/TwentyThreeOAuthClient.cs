@@ -3,7 +3,6 @@ using Skybrud.Essentials.Http;
 using Skybrud.Essentials.Http.Collections;
 using Skybrud.Essentials.Http.OAuth;
 using Skybrud.Social.TwentyThree.Endpoints;
-using Skybrud.Social.TwentyThree.Endpoints.Raw;
 
 namespace Skybrud.Social.TwentyThree.OAuth {
 

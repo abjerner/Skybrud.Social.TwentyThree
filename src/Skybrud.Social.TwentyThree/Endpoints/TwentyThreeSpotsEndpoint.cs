@@ -13,7 +13,7 @@ namespace Skybrud.Social.TwentyThree.Endpoints {
         /// <summary>
         /// Gets a reference to the Twenty Three service.
         /// </summary>
-        public TwentyThreeService Service { get; }
+        public TwentyThreeHttpService Service { get; }
 
         /// <summary>
         /// Gets a reference to the raw <strong>Spots</strong> endpoint.
@@ -24,7 +24,7 @@ namespace Skybrud.Social.TwentyThree.Endpoints {
 
         #region Constructors
 
-        internal TwentyThreeSpotsEndpoint(TwentyThreeService service) {
+        internal TwentyThreeSpotsEndpoint(TwentyThreeHttpService service) {
             Service = service;
         }
 
