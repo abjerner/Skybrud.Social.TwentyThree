@@ -6,7 +6,7 @@ using Skybrud.Social.TwentyThree.Models;
 
 namespace Skybrud.Social.TwentyThree.Exceptions {
     
-    public class TwentyThreeHttpException : Exception, IHttpException {
+    public class TwentyThreeHttpException : TwentyThreeException, IHttpException {
 
         #region Properties
 
