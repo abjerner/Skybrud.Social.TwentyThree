@@ -1,8 +1,8 @@
-﻿using System;
-using Skybrud.Essentials.Common;
+﻿using Skybrud.Essentials.Common;
 using Skybrud.Essentials.Http;
 using Skybrud.Essentials.Http.Collections;
 using Skybrud.Essentials.Http.OAuth;
+using Skybrud.Social.TwentyThree.Endpoints;
 using Skybrud.Social.TwentyThree.Endpoints.Raw;
 
 namespace Skybrud.Social.TwentyThree.OAuth {
@@ -20,6 +20,11 @@ namespace Skybrud.Social.TwentyThree.OAuth {
         /// Gets a reference to the raw <strong>Photos</strong> endpoint.
         /// </summary>
         public TwentyThreePhotosRawEndpoint Photos { get; }
+
+        /// <summary>
+        /// Gets a reference to the raw <strong>Spots</strong> endpoint.
+        /// </summary>
+        public TwentyThreeSpotsRawEndpoint Spots { get; }
 
         #endregion
 
@@ -49,6 +54,7 @@ namespace Skybrud.Social.TwentyThree.OAuth {
 
             // Endpoints
             Photos = new TwentyThreePhotosRawEndpoint(this);
+            Spots = new TwentyThreeSpotsRawEndpoint(this);
 
             // Specific to Video23
             RequestTokenUrl = "http://api.visualplatform.net/oauth/request_token";
@@ -70,7 +76,7 @@ namespace Skybrud.Social.TwentyThree.OAuth {
             }
 
             // Append "raw" to the query string so we can get a proper JSON response
-            if (request.QueryString == null) request.QueryString = new HttpQueryString();
+            request.QueryString ??= new HttpQueryString();
             request.QueryString.Add("format", "json");
             request.QueryString.Add("raw", string.Empty);
 
