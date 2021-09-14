@@ -49,6 +49,16 @@ namespace Skybrud.Social.TwentyThree.Options.Photos {
         /// Gets or sets a search term the returned photos or videos should match.
         /// </summary>
         public string Search { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the field by which the albums should be sorted.
+        /// </summary>
+        public TwentyThreePhotoSortField? OrderBy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the order by which the albums should be sorted.
+        /// </summary>
+        public TwentyThreeSortOrder? Order { get; set; }
 
         /// <summary>
         /// Gets or sets the page offset of the request.
@@ -81,6 +91,9 @@ namespace Skybrud.Social.TwentyThree.Options.Photos {
                     query.Add("video_p", "0");
                     break;
             }
+            
+            if (OrderBy != null) query.Add("orderby", TwentyThreeUtils.ToString(OrderBy));
+            if (Order != null) query.Add("order", TwentyThreeUtils.ToString(Order));
 
             if (Page > 0) query.Add("p", Page);
             if (Size > 0) query.Add("size", Size);

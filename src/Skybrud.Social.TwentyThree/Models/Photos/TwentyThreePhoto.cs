@@ -12,7 +12,7 @@ namespace Skybrud.Social.TwentyThree.Models.Photos {
 
         #region Properties
 
-        public string Id { get; }
+        public string PhotoId { get; }
 
         public string Title { get; }
 
@@ -81,7 +81,7 @@ namespace Skybrud.Social.TwentyThree.Models.Photos {
         /// </summary>
         /// <param name="obj">The <see cref="JObject"/> to be parsed.</param>
         protected TwentyThreePhoto(JObject obj) : base(obj) {
-            Id = obj.GetString("photo_id");
+            PhotoId = obj.GetString("photo_id");
             Title = obj.GetString("title");
             IsPublished = obj.GetString("published_p", StringUtils.ParseBoolean);
             PublishDate = obj.GetInt32("publish_date_epoch", EssentialsTime.FromUnixTimestamp);
