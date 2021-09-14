@@ -40,7 +40,7 @@ namespace Skybrud.Social.TwentyThree.Endpoints {
         ///     <cref>https://www.twentythree.net/api/photo-list</cref>
         /// </see>
         public TwentyThreePhotoListResponse GetList() {
-            return TwentyThreePhotoListResponse.ParseResponse(Raw.GetList());
+            return new TwentyThreePhotoListResponse(Raw.GetList());
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace Skybrud.Social.TwentyThree.Endpoints {
         ///     <cref>https://www.twentythree.net/api/photo-list</cref>
         /// </see>
         public TwentyThreePhotoListResponse GetList(TwentyThreeGetPhotosOptions options) {
-            return TwentyThreePhotoListResponse.ParseResponse(Raw.GetList(options));
+            return new TwentyThreePhotoListResponse(Raw.GetList(options));
         }
 
         #endregion
