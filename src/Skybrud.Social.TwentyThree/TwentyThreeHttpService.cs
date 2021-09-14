@@ -14,6 +14,11 @@ namespace Skybrud.Social.TwentyThree {
         public TwentyThreeOAuthClient Client { get; }
 
         /// <summary>
+        /// Gets a reference to the <strong>Albums</strong> endpoint.
+        /// </summary>
+        public TwentyThreeAlbumsEndpoint Albums { get; }
+
+        /// <summary>
         /// Gets a reference to the <strong>Photos</strong> endpoint.
         /// </summary>
         public TwentyThreePhotosEndpoint Photos { get; }
@@ -33,6 +38,7 @@ namespace Skybrud.Social.TwentyThree {
             Client = client;
             
             // Set the endpoints etc.
+            Albums = new TwentyThreeAlbumsEndpoint(this);
             Photos = new TwentyThreePhotosEndpoint(this);
             Spots = new TwentyThreeSpotsEndpoint(this);
 

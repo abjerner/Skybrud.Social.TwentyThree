@@ -16,6 +16,11 @@ namespace Skybrud.Social.TwentyThree.OAuth {
         public string HostName { get; set; }
 
         /// <summary>
+        /// Gets a reference to the raw <strong>Albums</strong> endpoint.
+        /// </summary>
+        public TwentyThreeAlbumsRawEndpoint Albums { get; }
+
+        /// <summary>
         /// Gets a reference to the raw <strong>Photos</strong> endpoint.
         /// </summary>
         public TwentyThreePhotosRawEndpoint Photos { get; }
@@ -52,6 +57,7 @@ namespace Skybrud.Social.TwentyThree.OAuth {
             Callback = callback;
 
             // Endpoints
+            Albums = new TwentyThreeAlbumsRawEndpoint(this);
             Photos = new TwentyThreePhotosRawEndpoint(this);
             Spots = new TwentyThreeSpotsRawEndpoint(this);
 
