@@ -26,6 +26,11 @@ namespace Skybrud.Social.TwentyThree.OAuth {
         public TwentyThreePhotosRawEndpoint Photos { get; }
 
         /// <summary>
+        /// Gets a reference to the raw <strong>Players</strong> endpoint.
+        /// </summary>
+        public TwentyThreePlayersRawEndpoint Players { get; }
+
+        /// <summary>
         /// Gets a reference to the raw <strong>Spots</strong> endpoint.
         /// </summary>
         public TwentyThreeSpotsRawEndpoint Spots { get; }
@@ -59,6 +64,7 @@ namespace Skybrud.Social.TwentyThree.OAuth {
             // Endpoints
             Albums = new TwentyThreeAlbumsRawEndpoint(this);
             Photos = new TwentyThreePhotosRawEndpoint(this);
+            Players = new TwentyThreePlayersRawEndpoint(this);
             Spots = new TwentyThreeSpotsRawEndpoint(this);
 
             // Specific to Video23
