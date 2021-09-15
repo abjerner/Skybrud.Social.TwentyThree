@@ -11,9 +11,9 @@ namespace Skybrud.Social.TwentyThree.OAuth {
         #region Properties
 
         /// <summary>
-        /// Gets or sets the name to be used for all API requests - eg. <c>videos.skybrud.dk</c>.
+        /// Gets or sets the domain to be used for all API requests - eg. <c>videos.skybrud.dk</c>.
         /// </summary>
-        public string HostName { get; set; }
+        public string Domain { get; set; }
 
         /// <summary>
         /// Gets a reference to the raw <strong>Albums</strong> endpoint.
@@ -88,15 +88,15 @@ namespace Skybrud.Social.TwentyThree.OAuth {
 
             // Handle /oembed requests specifically
             if (request.Url == "/oembed") {
-                if (string.IsNullOrWhiteSpace(HostName)) throw new PropertyNotSetException(nameof(HostName));
-                request.Url = "https://" + HostName + request.Url;
+                if (string.IsNullOrWhiteSpace(Domain)) throw new PropertyNotSetException(nameof(Domain));
+                request.Url = "https://" + Domain + request.Url;
                 return;
             }
             
             // Should we append the domain and schema to the URL?
             if (request.Url.StartsWith("/api/")) {
-                if (string.IsNullOrWhiteSpace(HostName)) throw new PropertyNotSetException(nameof(HostName));
-                request.Url = "https://" + HostName + request.Url;
+                if (string.IsNullOrWhiteSpace(Domain)) throw new PropertyNotSetException(nameof(Domain));
+                request.Url = "https://" + Domain + request.Url;
             }
 
             // Append "raw" to the query string so we can get a proper JSON response

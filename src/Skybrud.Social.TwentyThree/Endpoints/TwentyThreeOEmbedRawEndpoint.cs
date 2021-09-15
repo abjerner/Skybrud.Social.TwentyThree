@@ -47,9 +47,9 @@ namespace Skybrud.Social.TwentyThree.Endpoints {
         public IHttpResponse GetOEmbedFromId(string videoId) {
             
             if (string.IsNullOrWhiteSpace(videoId)) throw new ArgumentNullException(nameof(videoId));
-            if (string.IsNullOrWhiteSpace(Client.HostName)) throw new PropertyNotSetException(nameof(Client.HostName));
+            if (string.IsNullOrWhiteSpace(Client.Domain)) throw new PropertyNotSetException(nameof(Client.Domain));
 
-            string url = $"https://{Client.HostName}/manage/video/{videoId}";
+            string url = $"https://{Client.Domain}/manage/video/{videoId}";
             
             return GetOEmbed(new TwentyThreeOEmbedOptions(url));
 
