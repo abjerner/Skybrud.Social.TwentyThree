@@ -1,5 +1,4 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using Skybrud.Essentials.Http;
 using Skybrud.Essentials.Http.Exceptions;
 using Skybrud.Social.TwentyThree.Models;
@@ -18,7 +17,7 @@ namespace Skybrud.Social.TwentyThree.Exceptions {
         /// <summary>
         /// Gets the HTTP status code returned by the Twenty Three API.
         /// </summary>
-        public HttpStatusCode StatusCode { get; }
+        public HttpStatusCode StatusCode => Response.StatusCode;
 
         public TwentyThreeError Error { get; }
 
@@ -27,12 +26,16 @@ namespace Skybrud.Social.TwentyThree.Exceptions {
         #endregion
 
         #region Constructors
+        
+        public TwentyThreeHttpException(IHttpResponse response) : base("Invalid response received from the Twenty Three API (Status: " + ((int) response.StatusCode) + ")") {
+            Response = response;
+        }
 
         public TwentyThreeHttpException(IHttpResponse response, TwentyThreeError error) : base("Invalid response received from the Twenty Three API (Status: " + ((int) response.StatusCode) + ")") {
             Response = response;
-            StatusCode = response.StatusCode;
             Error = error;
         }
+
 
         #endregion
 

@@ -1,5 +1,7 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Net;
 using Skybrud.Essentials.Http;
+using Skybrud.Essentials.Json;
+using Skybrud.Social.TwentyThree.Exceptions;
 using Skybrud.Social.TwentyThree.Models.OEmbed;
 
 namespace Skybrud.Social.TwentyThree.Responses.OEmbed {
@@ -14,12 +16,17 @@ namespace Skybrud.Social.TwentyThree.Responses.OEmbed {
         /// </summary>
         /// <param name="response">The instance of <see cref="IHttpResponse"/> representing the raw response.</param>
         public TwentyThreeOEmbedResponse(IHttpResponse response) : base(response) {
-            
-            // Validate the response
-            ValidateResponse(response, out JObject body);
 
-            // Parse the response body
-            Body = TwentyThreeOEmbed.Parse(body);
+            switch (response.StatusCode) {
+
+                case HttpStatusCode.OK:
+                    Body = JsonUtils.ParseJsonObject(response.Body, TwentyThreeOEmbed.Parse);
+                    break;
+
+                default:
+                    throw new TwentyThreeHttpException(response);
+                
+            }
 
         }
 

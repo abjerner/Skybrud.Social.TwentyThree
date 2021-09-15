@@ -68,6 +68,7 @@ namespace Skybrud.Social.TwentyThree.OAuth {
 
             // Endpoints
             Albums = new TwentyThreeAlbumsRawEndpoint(this);
+            OEmbed = new TwentyThreeOEmbedRawEndpoint(this);
             Photos = new TwentyThreePhotosRawEndpoint(this);
             Players = new TwentyThreePlayersRawEndpoint(this);
             Spots = new TwentyThreeSpotsRawEndpoint(this);
@@ -85,6 +86,13 @@ namespace Skybrud.Social.TwentyThree.OAuth {
 
         protected override void PrepareHttpRequest(IHttpRequest request) {
 
+            // Handle /oembed requests specifically
+            if (request.Url == "/oembed") {
+                if (string.IsNullOrWhiteSpace(HostName)) throw new PropertyNotSetException(nameof(HostName));
+                request.Url = "https://" + HostName + request.Url;
+                return;
+            }
+            
             // Should we append the domain and schema to the URL?
             if (request.Url.StartsWith("/api/")) {
                 if (string.IsNullOrWhiteSpace(HostName)) throw new PropertyNotSetException(nameof(HostName));
@@ -93,8 +101,8 @@ namespace Skybrud.Social.TwentyThree.OAuth {
 
             // Append "raw" to the query string so we can get a proper JSON response
             request.QueryString ??= new HttpQueryString();
-            request.QueryString.Add("format", "json");
-            request.QueryString.Add("raw", string.Empty);
+            request.QueryString.Set("format", "json");
+            request.QueryString.Set("raw", string.Empty);
 
             // Call the base method to handle OAuth 1.0a logic
             base.PrepareHttpRequest(request);

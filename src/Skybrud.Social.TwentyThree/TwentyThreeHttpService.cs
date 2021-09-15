@@ -19,6 +19,11 @@ namespace Skybrud.Social.TwentyThree {
         public TwentyThreeAlbumsEndpoint Albums { get; }
 
         /// <summary>
+        /// Gets a reference to the <strong>OEmbed</strong> endpoint.
+        /// </summary>
+        public TwentyThreeOEmbedEndpoint OEmbed { get; }
+
+        /// <summary>
         /// Gets a reference to the <strong>Photos</strong> endpoint.
         /// </summary>
         public TwentyThreePhotosEndpoint Photos { get; }
@@ -44,6 +49,7 @@ namespace Skybrud.Social.TwentyThree {
             
             // Set the endpoints etc.
             Albums = new TwentyThreeAlbumsEndpoint(this);
+            OEmbed = new TwentyThreeOEmbedEndpoint(this);
             Photos = new TwentyThreePhotosEndpoint(this);
             Players = new TwentyThreePlayersEndpoint(this);
             Spots = new TwentyThreeSpotsEndpoint(this);
