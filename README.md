@@ -14,7 +14,7 @@ Grab a ZIP file of the latest release; unzip and move the files to the bin direc
 
 ### Dependencies
 
-- [**Skybrud.Essentials.Http.Core**](https://github.com/abjerner/Skybrud.Social)<br />A .NET library for making HTTP requests.
+- [**Skybrud.Essentials.Http**](https://github.com/skybrud/Skybrud.Essentials.Http)<br />A .NET library for making HTTP requests.
 
   - [**Json.NET**](https://github.com/jamesnk/newtonsoft.json)<br />Used for searializing/deserializing JSON.
 
