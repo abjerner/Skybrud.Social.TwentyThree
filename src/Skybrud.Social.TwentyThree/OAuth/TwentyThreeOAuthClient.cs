@@ -21,6 +21,11 @@ namespace Skybrud.Social.TwentyThree.OAuth {
         public TwentyThreeAlbumsRawEndpoint Albums { get; }
 
         /// <summary>
+        /// Gets a reference to the raw <strong>OEmbed</strong> endpoint.
+        /// </summary>
+        public TwentyThreeOEmbedRawEndpoint OEmbed { get; }
+
+        /// <summary>
         /// Gets a reference to the raw <strong>Photos</strong> endpoint.
         /// </summary>
         public TwentyThreePhotosRawEndpoint Photos { get; }
