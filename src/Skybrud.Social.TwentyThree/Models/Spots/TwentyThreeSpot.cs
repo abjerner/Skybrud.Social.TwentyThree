@@ -7,17 +7,17 @@ namespace Skybrud.Social.TwentyThree.Models.Spots {
 
         #region Properties
 
-        public string Id { get; }
+        public string SpotId { get; }
 
-        public string Name { get; }
+        public string SpotName { get; }
 
-        public string Type { get; }
+        public string SpotType { get; }
 
-        public string Design { get; }
+        public string SpotDesign { get; }
 
-        public string Layout { get; }
+        public string SpotLayout { get; }
 
-        public string Selection { get; }
+        public string SpotSelection { get; }
 
         public int VideoCount { get; }
 
@@ -34,12 +34,12 @@ namespace Skybrud.Social.TwentyThree.Models.Spots {
         /// </summary>
         /// <param name="obj">The <see cref="JObject"/> to be parsed.</param>
         protected TwentyThreeSpot(JObject obj) : base(obj) {
-            Id = obj.GetString("spot_id");
-            Name = obj.GetString("spot_name");
-            Type = obj.GetString("spot_type");
-            Design = obj.GetString("spot_design");
-            Layout = obj.GetString("spot_layout");
-            Selection = obj.GetString("spot_selection");
+            SpotId = obj.GetString("spot_id");
+            SpotName = obj.GetString("spot_name");
+            SpotType = obj.GetString("spot_type");
+            SpotDesign = obj.GetString("spot_design");
+            SpotLayout = obj.GetString("spot_layout");
+            SpotSelection = obj.GetString("spot_selection");
             VideoCount = obj.GetInt32("video_count");
             Token = obj.GetString("token");
             IncludeHtml = obj.GetString("include_html");
