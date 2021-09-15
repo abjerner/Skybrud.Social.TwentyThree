@@ -2,6 +2,8 @@
     
     public enum TwentyThreeAlbumSortField {
 
+        Unspecified,
+
         CreationDate,
         
         SortKey,

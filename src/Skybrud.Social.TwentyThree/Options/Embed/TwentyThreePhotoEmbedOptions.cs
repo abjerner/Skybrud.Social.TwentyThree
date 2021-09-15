@@ -15,4 +15,5 @@
         public TwentyThreePhotoEmbedOnEnd OnEnd { get; set;}
 
     }
+
 }

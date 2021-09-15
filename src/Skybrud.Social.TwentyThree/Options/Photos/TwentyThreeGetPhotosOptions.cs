@@ -53,12 +53,12 @@ namespace Skybrud.Social.TwentyThree.Options.Photos {
         /// <summary>
         /// Gets or sets the field by which the albums should be sorted.
         /// </summary>
-        public TwentyThreePhotoSortField? OrderBy { get; set; }
+        public TwentyThreePhotoSortField OrderBy { get; set; }
 
         /// <summary>
         /// Gets or sets the order by which the albums should be sorted.
         /// </summary>
-        public TwentyThreeSortOrder? Order { get; set; }
+        public TwentyThreeSortOrder Order { get; set; }
 
         /// <summary>
         /// Gets or sets the page offset of the request.
@@ -92,8 +92,8 @@ namespace Skybrud.Social.TwentyThree.Options.Photos {
                     break;
             }
             
-            if (OrderBy != null) query.Add("orderby", TwentyThreeUtils.ToString(OrderBy));
-            if (Order != null) query.Add("order", TwentyThreeUtils.ToString(Order));
+            if (OrderBy != default) query.Add("orderby", TwentyThreeUtils.ToString(OrderBy));
+            if (Order != default) query.Add("order", TwentyThreeUtils.ToString(Order));
 
             if (Page > 0) query.Add("p", Page);
             if (Size > 0) query.Add("size", Size);

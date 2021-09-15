@@ -24,7 +24,7 @@ namespace Skybrud.Social.TwentyThree.Options.Spots {
 
         public TwentyThreeSpotSortField OrderBy { get; set; }
 
-        public SortOrder Order { get; set; }
+        public TwentyThreeSortOrder Order { get; set; }
 
         public int Page { get; set; }
 
@@ -60,8 +60,8 @@ namespace Skybrud.Social.TwentyThree.Options.Spots {
                     break;
             }
 
-            if (OrderBy != default) query.Add("orderby", OrderBy.ToUnderscore());
-            if (Order != default) query.Add("order", Order == SortOrder.Ascending ? "asc" : "desc");
+            if (OrderBy != default) query.Add("orderby", TwentyThreeUtils.ToString(OrderBy));
+            if (Order != default) query.Add("order", TwentyThreeUtils.ToString(Order));
 
             if (Page > 0) query.Add("p", Page);
             if (Size > 0) query.Add("size", Size);

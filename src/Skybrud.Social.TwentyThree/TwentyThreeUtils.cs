@@ -6,6 +6,7 @@ using Skybrud.Social.TwentyThree.Options;
 using Skybrud.Social.TwentyThree.Options.Albums;
 using Skybrud.Social.TwentyThree.Options.Embed;
 using Skybrud.Social.TwentyThree.Options.Photos;
+using Skybrud.Social.TwentyThree.Options.Spots;
 
 namespace Skybrud.Social.TwentyThree {
     
@@ -24,6 +25,10 @@ namespace Skybrud.Social.TwentyThree {
                 TwentyThreeAlbumSortField.SortKey => "sortkey",
                 _ => field.ToUnderscore()
             };
+        }
+        
+        public static object ToString(TwentyThreeSpotSortField field) {
+            return field.ToUnderscore();
         }
 
         public static object ToString(TwentyThreeSortOrder? order) {
