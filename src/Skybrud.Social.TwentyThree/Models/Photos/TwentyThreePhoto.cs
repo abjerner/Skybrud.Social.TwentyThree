@@ -16,6 +16,8 @@ namespace Skybrud.Social.TwentyThree.Models.Photos {
 
         public string Title { get; }
 
+        public string Token { get; }
+
         public bool IsPublished { get; }
 
         public TimeSpan VideoLength { get; }
@@ -83,6 +85,7 @@ namespace Skybrud.Social.TwentyThree.Models.Photos {
         protected TwentyThreePhoto(JObject obj) : base(obj) {
             PhotoId = obj.GetString("photo_id");
             Title = obj.GetString("title");
+            Token = obj.GetString("token");
             IsPublished = obj.GetString("published_p", StringUtils.ParseBoolean);
             PublishDate = obj.GetInt32("publish_date_epoch", EssentialsTime.FromUnixTimestamp);
             CreationDate = obj.GetInt32("creation_date_epoch", EssentialsTime.FromUnixTimestamp);
