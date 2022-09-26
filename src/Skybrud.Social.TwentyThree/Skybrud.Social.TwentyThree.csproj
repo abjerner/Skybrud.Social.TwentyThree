@@ -1,26 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <LangVersion>10.0</LangVersion>
     <TargetFrameworks>netstandard1.3;netstandard2.0;net45;net46;net47</TargetFrameworks>
-    <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
-    <RunBuildTargets>true</RunBuildTargets>
-    <BuildInParallel>false</BuildInParallel>
-    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
 
   <PropertyGroup>
-    <RootNamespace>Skybrud.Social.TwentyThree</RootNamespace>
-    <Version>1.1.0-beta001</Version>
+    <VersionPrefix>1.1.0</VersionPrefix>
+    <VersionSuffix Condition="'$(Configuration)'=='Debug'">build$([System.DateTime]::UtcNow.ToString(`yyyyMMddHHmm`))</VersionSuffix>
     <Company>Limbo</Company>
     <Product>Skybrud.Social</Product>
-    <Authors>Anders Bjerner</Authors>
-    <Copyright>Copyright © 2021</Copyright>
-    <Description>Authentication and service implementation for the Twenty Three API.</Description>
+    <Copyright>Copyright © 2022</Copyright>
+    <Description>Authentication and service implementation for the TwentyThree API.</Description>
   </PropertyGroup>
-  
+
+  <!-- Information for the NuGet package -->
   <PropertyGroup>
     <PackageId>Skybrud.Social.TwentyThree</PackageId>
-    <PackageTags>Twenty Three, Skybrud, Social, OAuth, JSON, Limbo</PackageTags>
+    <PackageTags>TwentyThree, Skybrud, Social, OAuth, JSON, Limbo</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/abjerner/Skybrud.Social.TwentyThree</PackageProjectUrl>
     <PackageIcon>Limbo.png</PackageIcon>
@@ -28,22 +25,19 @@
     <RepositoryUrl>https://github.com/abjerner/Skybrud.Social.TwentyThree</RepositoryUrl>
   </PropertyGroup>
 
+  <!-- Include NuGet dependencies -->
   <ItemGroup>
     <PackageReference Include="Skybrud.Essentials.Http" Version="1.0.14" />
   </ItemGroup>
 
+  <!-- Include package icon for NuGet -->
   <ItemGroup>
-    <None Include="../build/Limbo.png" Pack="true" PackagePath="\" />
+    <Content Include="../build/Limbo.png" Pack="true" PackagePath="\" />
   </ItemGroup>
 
-  <!--
+  <!-- Generate XML documentation -->
   <PropertyGroup>
-    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Skybrud.Social.TwentyThree.xml</DocumentationFile>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
   </PropertyGroup>
-  -->
-
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(ConfigurationName)'=='Release' AND '$(TargetFramework)'=='net47' AND '$(BuildTools)'=='1'">
-    <Exec Command="&quot;$(ProjectDir)..\build\Skybrud.BuildTools.Tasks.exe&quot; &quot;postBuild&quot; &quot;$(ConfigurationName)&quot; &quot;$(ProjectPath)&quot; &quot;$(TargetPath)&quot;" />
-  </Target>
 
 </Project>
