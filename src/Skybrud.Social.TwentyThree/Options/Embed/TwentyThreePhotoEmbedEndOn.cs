@@ -3,7 +3,7 @@
     /// <summary>
     /// Enum class indicating what should happen when a video ends.
     /// </summary>
-    public enum TwentyThreePhotoEmbedOnEnd {
+    public enum TwentyThreePhotoEmbedEndOn {
 
         /// <summary>
         /// Show sharing.

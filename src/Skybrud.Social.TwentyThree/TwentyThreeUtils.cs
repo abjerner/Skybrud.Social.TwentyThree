@@ -57,13 +57,13 @@ namespace Skybrud.Social.TwentyThree {
             return GetEmbedCode(site.Domain, photo.PhotoId, photo.Token, playerId);
         }
 
-        public static string GetEmbedCode(TwentyThreeSite site, TwentyThreePhoto photo, string playerId, bool? autoPlay, TwentyThreePhotoEmbedOnEnd onEnd) {
-            return GetEmbedCode(site.Domain, photo.PhotoId, photo.Token, playerId, autoPlay, onEnd);
+        public static string GetEmbedCode(TwentyThreeSite site, TwentyThreePhoto photo, string playerId, bool? autoPlay, TwentyThreePhotoEmbedEndOn endOn) {
+            return GetEmbedCode(site.Domain, photo.PhotoId, photo.Token, playerId, autoPlay, endOn);
         }
 
         public static string GetEmbedCode(TwentyThreePhotoEmbedOptions options) {
             if (options == null) throw new ArgumentNullException(nameof(options));
-            return GetEmbedCode(options.Domain, options.PhotoId, options.Token, options.PlayerId, options.AutoPlay, options.OnEnd);
+            return GetEmbedCode(options.Domain, options.PhotoId, options.Token, options.PlayerId, options.AutoPlay, options.EndOn);
         }
         
         public static string GetEmbedCode(string domain, string photoId, string token) {
@@ -74,7 +74,7 @@ namespace Skybrud.Social.TwentyThree {
             return GetEmbedCode(domain, photoId, token, playerId, null, default);
         }
         
-        public static string GetEmbedCode(string domain, string photoId, string token, string playerId, bool? autoPlay, TwentyThreePhotoEmbedOnEnd? onEnd) {
+        public static string GetEmbedCode(string domain, string photoId, string token, string playerId, bool? autoPlay, TwentyThreePhotoEmbedEndOn? endOn) {
             
             if (string.IsNullOrWhiteSpace(domain)) throw new ArgumentNullException(nameof(domain));
             if (string.IsNullOrWhiteSpace(photoId)) throw new ArgumentNullException(nameof(photoId));
@@ -86,7 +86,7 @@ namespace Skybrud.Social.TwentyThree {
             string url = $"//{domain}/{playerId}.ihtml/player.html?token={token}&source=embed&photo%5fid={photoId}";
 
             if (autoPlay != null) url += "&autoPlay=1";
-            if (onEnd != default) url += $"&onEnd={onEnd.ToLower()}";
+            if (endOn != default) url += $"&endOn={endOn.ToLower()}";
             
             return $"<div style=\"width:100%; height:0; position: relative; padding-bottom:100.0%\"><iframe src=\"{url}\" style=\"width:100%; height:100%; position: absolute; top: 0; left: 0;\" frameborder=\"0\" border=\"0\" scrolling=\"no\" mozallowfullscreen=\"1\" webkitallowfullscreen=\"1\" allowfullscreen=\"1\" allow=\"autoplay; fullscreen\"></iframe></div>";
 

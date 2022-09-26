@@ -14,7 +14,7 @@ namespace Skybrud.Social.TwentyThree.Options.Embed {
 
         public bool? AutoPlay { get; set; }
 
-        public TwentyThreePhotoEmbedOnEnd? OnEnd { get; set; }
+        public TwentyThreePhotoEmbedEndOn? EndOn { get; set; }
 
     }
 
