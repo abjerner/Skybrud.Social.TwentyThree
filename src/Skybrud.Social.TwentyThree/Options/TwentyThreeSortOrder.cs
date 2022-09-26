@@ -1,11 +1,9 @@
 ﻿namespace Skybrud.Social.TwentyThree.Options {
-    
-    public enum TwentyThreeSortOrder {
 
-        /// <summary>
-        /// Indicates that the sort order isn't specified when calling the Twenty Three API, leaving the sort order up to the API default.
-        /// </summary>
-        Unspecified,
+    /// <summary>
+    /// Enum class indicating the order by which items should be sorted.
+    /// </summary>
+    public enum TwentyThreeSortOrder {
 
         /// <summary>
         /// Indicates that results should be sorted in asscending order.

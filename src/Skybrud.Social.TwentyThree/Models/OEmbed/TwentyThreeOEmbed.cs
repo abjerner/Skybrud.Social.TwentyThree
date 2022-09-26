@@ -2,6 +2,8 @@
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
+#pragma warning disable CS1591
+
 namespace Skybrud.Social.TwentyThree.Models.OEmbed {
     
     /// <summary>
@@ -60,24 +62,13 @@ namespace Skybrud.Social.TwentyThree.Models.OEmbed {
 
             string type = json.GetString("type");
 
-            switch (type) {
-
-                case null:
-                case "":
-                    throw new Exception("No OEmbed type specified.");
-
-                case "video":
-                    return TwentyThreeOEmbedVideo.Parse(json);
-
-                case "photo":
-                    return TwentyThreeOEmbedPhoto.Parse(json);
-                
-                default:
-                    throw new Exception($"Unsupported OEmbed type: {type}");
-
-            }
-
-
+            return type switch {
+                null => throw new Exception("No OEmbed type specified."),
+                "" => throw new Exception("No OEmbed type specified."),
+                "video" => TwentyThreeOEmbedVideo.Parse(json),
+                "photo" => TwentyThreeOEmbedPhoto.Parse(json),
+                _ => throw new Exception($"Unsupported OEmbed type: {type}")
+            };
         }
 
     }

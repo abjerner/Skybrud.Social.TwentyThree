@@ -6,6 +6,9 @@ using Skybrud.Social.TwentyThree.Endpoints;
 
 namespace Skybrud.Social.TwentyThree.OAuth {
 
+    /// <summary>
+    /// Class for handling authentication and communication with the TwentyThree API using OAuth 1.0a.
+    /// </summary>
     public class TwentyThreeOAuthClient : OAuthClient {
 
         #region Properties
@@ -84,6 +87,7 @@ namespace Skybrud.Social.TwentyThree.OAuth {
 
         #region Member methods
 
+        /// <inheritdoc />
         protected override void PrepareHttpRequest(IHttpRequest request) {
 
             // Handle /oembed requests specifically

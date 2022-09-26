@@ -2,8 +2,13 @@
 using Skybrud.Essentials.Json;
 using Skybrud.Essentials.Json.Extensions;
 
+#pragma warning disable CS1591
+
 namespace Skybrud.Social.TwentyThree.Models {
 
+    /// <summary>
+    /// Class representing an error received from the TwentyThree API.
+    /// </summary>
     public class TwentyThreeError : JsonObjectBase {
 
         #region Properties
@@ -22,12 +27,12 @@ namespace Skybrud.Social.TwentyThree.Models {
 
         #region Constructor
 
-        protected TwentyThreeError(JObject obj) : base(obj) {
-            Status = obj.GetString("status");
-            Message = obj.GetString("message");
-            Code = obj.GetString("code");
-            PermissionLevel = obj.GetString("permission_level");
-            Endpoint = obj.GetString("endpoint");
+        protected TwentyThreeError(JObject json) : base(json) {
+            Status = json.GetString("status");
+            Message = json.GetString("message");
+            Code = json.GetString("code");
+            PermissionLevel = json.GetString("permission_level");
+            Endpoint = json.GetString("endpoint");
         }
 
         #endregion
@@ -35,12 +40,12 @@ namespace Skybrud.Social.TwentyThree.Models {
         #region Static methods
 
         /// <summary>
-        /// Gets an instance of <see cref="TwentyThreeError"/> from the specified <see cref="JObject"/>.
+        /// Gets an instance of <see cref="TwentyThreeError"/> from the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to parse.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="TwentyThreeError"/>.</returns>
-        public static TwentyThreeError Parse(JObject obj) {
-            return obj == null ? null : new TwentyThreeError(obj);
+        public static TwentyThreeError Parse(JObject json) {
+            return json == null ? null : new TwentyThreeError(json);
         }
 
         #endregion

@@ -1,8 +1,11 @@
-﻿namespace Skybrud.Social.TwentyThree.Options.Albums {
-    
-    public enum TwentyThreeAlbumSortField {
+﻿#pragma warning disable CS1591
 
-        Unspecified,
+namespace Skybrud.Social.TwentyThree.Options.Albums {
+
+    /// <summary>
+    /// Enum class indiucating how albums should be sorted.
+    /// </summary>
+    public enum TwentyThreeAlbumSortField {
 
         CreationDate,
         

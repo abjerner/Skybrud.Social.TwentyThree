@@ -11,10 +11,10 @@ namespace Skybrud.Social.TwentyThree.Models {
         #region Constructor
 
         /// <summary>
-        /// Initializes a new instance from the specified <paramref name="obj"/>.
+        /// Initializes a new instance from the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> representing the object.</param>
-        protected TwentyThreeObject(JObject obj) : base(obj) { }
+        /// <param name="json">The instance of <see cref="JObject"/> representing the object.</param>
+        protected TwentyThreeObject(JObject json) : base(json) { }
 
         #endregion
 

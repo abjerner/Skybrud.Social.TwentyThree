@@ -7,6 +7,10 @@ namespace Skybrud.Social.TwentyThree.Exceptions {
     /// </summary>
     public class TwentyThreeException : Exception {
         
+        /// <summary>
+        /// Initializes a new exception with the specified <paramref name="message"/>.
+        /// </summary>
+        /// <param name="message">The message of the exception.</param>
         public TwentyThreeException(string message) : base(message) { }
 
     }

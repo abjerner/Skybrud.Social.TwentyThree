@@ -3,6 +3,8 @@ using Skybrud.Essentials.Http;
 using Skybrud.Essentials.Http.Collections;
 using Skybrud.Essentials.Http.Options;
 
+#pragma warning disable CS1591
+
 namespace Skybrud.Social.TwentyThree.Options.OEmbed {
     
     /// <summary>
@@ -19,7 +21,7 @@ namespace Skybrud.Social.TwentyThree.Options.OEmbed {
 
         public int MaxHeight { get; set; }
 
-        public bool AutoPlay { get; set; }
+        public bool? AutoPlay { get; set; }
 
         public string PlayerId { get; set; }
         
@@ -40,7 +42,7 @@ namespace Skybrud.Social.TwentyThree.Options.OEmbed {
             
             if (MaxWidth > 0) query.Add("maxwidth", MaxWidth);
             if (MaxHeight > 0) query.Add("maxheight", MaxHeight);
-            if (AutoPlay) query.Add("autoplay", AutoPlay);
+            if (AutoPlay is not null) query.Add("autoplay", AutoPlay.Value);
             if (!string.IsNullOrWhiteSpace(PlayerId)) query.Add("player_id", PlayerId);
 
             // Initialize a new request

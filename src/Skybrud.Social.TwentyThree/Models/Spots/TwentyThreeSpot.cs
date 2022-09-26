@@ -1,8 +1,13 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
+#pragma warning disable CS1591
+
 namespace Skybrud.Social.TwentyThree.Models.Spots {
 
+    /// <summary>
+    /// Class representing a TwentyThree spot.
+    /// </summary>
     public class TwentyThreeSpot : TwentyThreeObject {
 
         #region Properties
@@ -30,19 +35,19 @@ namespace Skybrud.Social.TwentyThree.Models.Spots {
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of <see cref="TwentyThreeSpot"/> parsed from the specified <paramref name="obj"/>.
+        /// Initializes a new instance of <see cref="TwentyThreeSpot"/> parsed from the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">The <see cref="JObject"/> to be parsed.</param>
-        protected TwentyThreeSpot(JObject obj) : base(obj) {
-            SpotId = obj.GetString("spot_id");
-            SpotName = obj.GetString("spot_name");
-            SpotType = obj.GetString("spot_type");
-            SpotDesign = obj.GetString("spot_design");
-            SpotLayout = obj.GetString("spot_layout");
-            SpotSelection = obj.GetString("spot_selection");
-            VideoCount = obj.GetInt32("video_count");
-            Token = obj.GetString("token");
-            IncludeHtml = obj.GetString("include_html");
+        /// <param name="json">The <see cref="JObject"/> to be parsed.</param>
+        protected TwentyThreeSpot(JObject json) : base(json) {
+            SpotId = json.GetString("spot_id");
+            SpotName = json.GetString("spot_name");
+            SpotType = json.GetString("spot_type");
+            SpotDesign = json.GetString("spot_design");
+            SpotLayout = json.GetString("spot_layout");
+            SpotSelection = json.GetString("spot_selection");
+            VideoCount = json.GetInt32("video_count");
+            Token = json.GetString("token");
+            IncludeHtml = json.GetString("include_html");
         }
 
         #endregion
@@ -50,12 +55,12 @@ namespace Skybrud.Social.TwentyThree.Models.Spots {
         #region Static methods
 
         /// <summary>
-        /// Gets an instance of <see cref="TwentyThreeSpot"/> from the specified <see cref="JObject"/>.
+        /// Gets an instance of <see cref="TwentyThreeSpot"/> from the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to parse.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="TwentyThreeSpot"/>.</returns>
-        public static TwentyThreeSpot Parse(JObject obj) {
-            return obj == null ? null : new TwentyThreeSpot(obj);
+        public static TwentyThreeSpot Parse(JObject json) {
+            return json == null ? null : new TwentyThreeSpot(json);
         }
 
         #endregion

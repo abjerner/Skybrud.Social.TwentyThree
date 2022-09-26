@@ -39,11 +39,10 @@ namespace Skybrud.Social.TwentyThree.Options.Photos {
         /// <summary>
         /// Gets or sets whether videos should be included in the response.
         /// 
-        /// Possible values are <see cref="TwentyThreeVideoParameter.All"/>,
-        /// <see cref="TwentyThreeVideoParameter.OnlyVideos"/> and
+        /// Possible values are <see cref="TwentyThreeVideoParameter.OnlyVideos"/> and
         /// <see cref="TwentyThreeVideoParameter.IgnoreVideos"/>.
         /// </summary>
-        public TwentyThreeVideoParameter Video { get; set; }
+        public TwentyThreeVideoParameter? Video { get; set; }
 
         /// <summary>
         /// Gets or sets a search term the returned photos or videos should match.
@@ -53,27 +52,28 @@ namespace Skybrud.Social.TwentyThree.Options.Photos {
         /// <summary>
         /// Gets or sets the field by which the albums should be sorted.
         /// </summary>
-        public TwentyThreePhotoSortField OrderBy { get; set; }
+        public TwentyThreePhotoSortField? OrderBy { get; set; }
 
         /// <summary>
         /// Gets or sets the order by which the albums should be sorted.
         /// </summary>
-        public TwentyThreeSortOrder Order { get; set; }
+        public TwentyThreeSortOrder? Order { get; set; }
 
         /// <summary>
         /// Gets or sets the page offset of the request.
         /// </summary>
-        public int Page { get; set; }
+        public int? Page { get; set; }
 
         /// <summary>
         /// Gets or sets the maximum amount of photos to returned per page.
         /// </summary>
-        public int Size { get; set; }
+        public int? Size { get; set; }
 
         #endregion
 
         #region Member methods
-        
+
+        /// <inheritdoc />
         public IHttpRequest GetRequest() {
 
             IHttpQueryString query = new HttpQueryString();
@@ -92,11 +92,11 @@ namespace Skybrud.Social.TwentyThree.Options.Photos {
                     break;
             }
             
-            if (OrderBy != default) query.Add("orderby", TwentyThreeUtils.ToString(OrderBy));
-            if (Order != default) query.Add("order", TwentyThreeUtils.ToString(Order));
+            if (OrderBy is not null) query.Add("orderby", TwentyThreeUtils.ToString(OrderBy));
+            if (Order is not null) query.Add("order", TwentyThreeUtils.ToString(Order));
 
-            if (Page > 0) query.Add("p", Page);
-            if (Size > 0) query.Add("size", Size);
+            if (Page is not null) query.Add("p", Page);
+            if (Size is not null) query.Add("size", Size);
 
             // Initialize a new request
             return HttpRequest.Get("/api/photo/list", query);

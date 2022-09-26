@@ -1,5 +1,7 @@
-﻿namespace Skybrud.Social.TwentyThree.Options.Embed {
-    
+﻿#pragma warning disable CS1591
+
+namespace Skybrud.Social.TwentyThree.Options.Embed {
+
     public class TwentyThreePhotoEmbedOptions {
 
         public string Domain { get; set; }
@@ -12,7 +14,7 @@
 
         public bool? AutoPlay { get; set; }
 
-        public TwentyThreePhotoEmbedOnEnd OnEnd { get; set;}
+        public TwentyThreePhotoEmbedOnEnd? OnEnd { get; set; }
 
     }
 

@@ -2,6 +2,8 @@
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
+#pragma warning disable CS1591
+
 namespace Skybrud.Social.TwentyThree.Models.OEmbed {
     
     /// <summary>

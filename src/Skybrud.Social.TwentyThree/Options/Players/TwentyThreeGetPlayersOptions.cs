@@ -17,23 +17,24 @@ namespace Skybrud.Social.TwentyThree.Options.Players {
         /// <summary>
         /// Gets or sets the page offset of the request.
         /// </summary>
-        public int Page { get; set; }
+        public int? Page { get; set; }
 
         /// <summary>
         /// Gets or sets the maximum amount of photos to returned per page.
         /// </summary>
-        public int Size { get; set; }
+        public int? Size { get; set; }
 
         #endregion
 
         #region Member methods
-        
+
+        /// <inheritdoc />
         public IHttpRequest GetRequest() {
 
             IHttpQueryString query = new HttpQueryString();
 
-            if (Page > 0) query.Add("p", Page);
-            if (Size > 0) query.Add("size", Size);
+            if (Page is not null) query.Add("p", Page);
+            if (Size is not null) query.Add("size", Size);
 
             // Initialize a new request
             return HttpRequest.Get("/api/player/list", query);

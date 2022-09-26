@@ -3,14 +3,26 @@ using Skybrud.Essentials.Json.Extensions;
 
 namespace Skybrud.Social.TwentyThree.Models.Albums {
 
+    /// <summary>
+    /// Class representing a TwentyThree album.
+    /// </summary>
     public class TwentyThreeAlbum : TwentyThreeObject {
 
         #region Properties
 
+        /// <summary>
+        /// Gets the ID of the album.
+        /// </summary>
         public string AlbumId { get; }
 
+        /// <summary>
+        /// Gets the title of the album.
+        /// </summary>
         public string Title { get; }
 
+        /// <summary>
+        /// gets the token of the album.
+        /// </summary>
         public string Token { get; }
 
         #endregion
@@ -18,13 +30,13 @@ namespace Skybrud.Social.TwentyThree.Models.Albums {
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of <see cref="TwentyThreeAlbum"/> parsed from the specified <paramref name="obj"/>.
+        /// Initializes a new instance of <see cref="TwentyThreeAlbum"/> parsed from the specified <paramref name="json"/>.
         /// </summary>
-        /// <param name="obj">The <see cref="JObject"/> to be parsed.</param>
-        protected TwentyThreeAlbum(JObject obj) : base(obj) {
-            AlbumId = obj.GetString("album_id");
-            Title = obj.GetString("title");
-            Token = obj.GetString("token");
+        /// <param name="json">The <see cref="JObject"/> to be parsed.</param>
+        protected TwentyThreeAlbum(JObject json) : base(json) {
+            AlbumId = json.GetString("album_id");
+            Title = json.GetString("title");
+            Token = json.GetString("token");
         }
 
         #endregion
@@ -32,12 +44,12 @@ namespace Skybrud.Social.TwentyThree.Models.Albums {
         #region Static methods
 
         /// <summary>
-        /// Gets an instance of <see cref="TwentyThreeAlbum"/> from the specified <see cref="JObject"/>.
+        /// Gets an instance of <see cref="TwentyThreeAlbum"/> from the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to parse.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="TwentyThreeAlbum"/>.</returns>
-        public static TwentyThreeAlbum Parse(JObject obj) {
-            return obj == null ? null : new TwentyThreeAlbum(obj);
+        public static TwentyThreeAlbum Parse(JObject json) {
+            return json == null ? null : new TwentyThreeAlbum(json);
         }
 
         #endregion

@@ -8,30 +8,24 @@ using Skybrud.Social.TwentyThree.Options.Embed;
 using Skybrud.Social.TwentyThree.Options.Photos;
 using Skybrud.Social.TwentyThree.Options.Spots;
 
+#pragma warning disable CS1591
+
 namespace Skybrud.Social.TwentyThree {
     
     public static class TwentyThreeUtils {
 
-        public static string ToString(TwentyThreeSortOrder order) {
-            return order switch {
-                TwentyThreeSortOrder.Ascending => "asc",
-                TwentyThreeSortOrder.Descending => "desc",
-                _ => null
-            };
-        }
-
-        public static string ToString(TwentyThreeAlbumSortField field) {
+        public static string ToString(TwentyThreeAlbumSortField? field) {
             return field switch {
                 TwentyThreeAlbumSortField.SortKey => "sortkey",
                 _ => field.ToUnderscore()
             };
         }
         
-        public static object ToString(TwentyThreeSpotSortField field) {
-            return field.ToUnderscore();
+        public static string ToString(TwentyThreeSpotSortField? field) {
+            return field?.ToUnderscore();
         }
 
-        public static object ToString(TwentyThreeSortOrder? order) {
+        public static string ToString(TwentyThreeSortOrder? order) {
             return order switch {
                 TwentyThreeSortOrder.Ascending => "asc",
                 TwentyThreeSortOrder.Descending => "desc",
@@ -39,7 +33,7 @@ namespace Skybrud.Social.TwentyThree {
             };
         }
 
-        public static object ToString(TwentyThreePhotoSortField? field) {
+        public static string ToString(TwentyThreePhotoSortField? field) {
             return field?.ToUnderscore();
         }
 
@@ -68,7 +62,7 @@ namespace Skybrud.Social.TwentyThree {
             return GetEmbedCode(domain, photoId, token, playerId, null, default);
         }
         
-        public static string GetEmbedCode(string domain, string photoId, string token, string playerId, bool? autoPlay, TwentyThreePhotoEmbedOnEnd onEnd) {
+        public static string GetEmbedCode(string domain, string photoId, string token, string playerId, bool? autoPlay, TwentyThreePhotoEmbedOnEnd? onEnd) {
             
             if (string.IsNullOrWhiteSpace(domain)) throw new ArgumentNullException(nameof(domain));
             if (string.IsNullOrWhiteSpace(photoId)) throw new ArgumentNullException(nameof(photoId));

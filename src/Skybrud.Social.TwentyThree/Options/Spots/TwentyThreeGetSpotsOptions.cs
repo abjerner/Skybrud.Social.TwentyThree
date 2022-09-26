@@ -1,8 +1,8 @@
-﻿using Skybrud.Essentials.Collections;
-using Skybrud.Essentials.Http;
+﻿using Skybrud.Essentials.Http;
 using Skybrud.Essentials.Http.Collections;
 using Skybrud.Essentials.Http.Options;
-using Skybrud.Essentials.Strings.Extensions;
+
+#pragma warning disable CS1591
 
 namespace Skybrud.Social.TwentyThree.Options.Spots {
     
@@ -20,15 +20,15 @@ namespace Skybrud.Social.TwentyThree.Options.Spots {
 
         public string Token { get; set; }
 
-        public TwentyThreeSpotType SpotType { get; set; }
+        public TwentyThreeSpotType? SpotType { get; set; }
 
-        public TwentyThreeSpotSortField OrderBy { get; set; }
+        public TwentyThreeSpotSortField? OrderBy { get; set; }
 
-        public TwentyThreeSortOrder Order { get; set; }
+        public TwentyThreeSortOrder? Order { get; set; }
 
-        public int Page { get; set; }
+        public int? Page { get; set; }
 
-        public int Size { get; set; }
+        public int? Size { get; set; }
 
         #endregion
 
@@ -60,11 +60,11 @@ namespace Skybrud.Social.TwentyThree.Options.Spots {
                     break;
             }
 
-            if (OrderBy != default) query.Add("orderby", TwentyThreeUtils.ToString(OrderBy));
-            if (Order != default) query.Add("order", TwentyThreeUtils.ToString(Order));
+            if (OrderBy is not null) query.Add("orderby", TwentyThreeUtils.ToString(OrderBy));
+            if (Order is not null) query.Add("order", TwentyThreeUtils.ToString(Order));
 
-            if (Page > 0) query.Add("p", Page);
-            if (Size > 0) query.Add("size", Size);
+            if (Page is not null) query.Add("p", Page);
+            if (Size is not null) query.Add("size", Size);
 
             return HttpRequest.Get("/api/spot/list", query);
 

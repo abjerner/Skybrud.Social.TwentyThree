@@ -4,6 +4,9 @@ using Skybrud.Social.TwentyThree.OAuth;
 
 namespace Skybrud.Social.TwentyThree {
 
+    /// <summary>
+    /// Class working as an entry point to the TwentyThree API.
+    /// </summary>
     public class TwentyThreeHttpService {
 
         #region Properties
