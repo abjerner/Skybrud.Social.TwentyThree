@@ -51,15 +51,7 @@ namespace Skybrud.Social.TwentyThree.Options.Spots {
             if (string.IsNullOrWhiteSpace(SpotId) == false) query.Add("spot_id", SpotId);
             if (string.IsNullOrWhiteSpace(Token) == false) query.Add("token", Token);
 
-            switch (SpotType) {
-                case TwentyThreeSpotType.Page:
-                    query.Add("spot_type", "page");
-                    break;
-                case TwentyThreeSpotType.Widget:
-                    query.Add("spot_type", "widget");
-                    break;
-            }
-
+            if (SpotType is not null) query.Add("spot_type", TwentyThreeUtils.ToString(SpotType));
             if (OrderBy is not null) query.Add("orderby", TwentyThreeUtils.ToString(OrderBy));
             if (Order is not null) query.Add("order", TwentyThreeUtils.ToString(Order));
 

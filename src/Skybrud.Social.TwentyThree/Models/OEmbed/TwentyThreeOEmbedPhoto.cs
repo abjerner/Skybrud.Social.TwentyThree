@@ -31,7 +31,7 @@ namespace Skybrud.Social.TwentyThree.Models.OEmbed {
             Height = json.GetInt32("height");
         }
 
-        public new static TwentyThreeOEmbedPhoto Parse(JObject json) {
+        public static new TwentyThreeOEmbedPhoto Parse(JObject json) {
             return json == null ? null : new TwentyThreeOEmbedPhoto(json);
         }
 

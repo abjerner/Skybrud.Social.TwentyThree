@@ -69,6 +69,7 @@ namespace Skybrud.Social.TwentyThree.Models.OEmbed {
                 "photo" => TwentyThreeOEmbedPhoto.Parse(json),
                 _ => throw new Exception($"Unsupported OEmbed type: {type}")
             };
+
         }
 
     }

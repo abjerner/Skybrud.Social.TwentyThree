@@ -83,15 +83,7 @@ namespace Skybrud.Social.TwentyThree.Options.Photos {
             if (string.IsNullOrWhiteSpace(Token) == false) query.Add("token", Token);
             if (string.IsNullOrWhiteSpace(Search) == false) query.Add("search", Search);
 
-            switch (Video) {
-                case TwentyThreeVideoParameter.OnlyVideos:
-                    query.Add("video_p", "1");
-                    break;
-                case TwentyThreeVideoParameter.IgnoreVideos:
-                    query.Add("video_p", "0");
-                    break;
-            }
-            
+            if (Video is not null) query.Add("video_p", TwentyThreeUtils.ToString(Video));
             if (OrderBy is not null) query.Add("orderby", TwentyThreeUtils.ToString(OrderBy));
             if (Order is not null) query.Add("order", TwentyThreeUtils.ToString(Order));
 

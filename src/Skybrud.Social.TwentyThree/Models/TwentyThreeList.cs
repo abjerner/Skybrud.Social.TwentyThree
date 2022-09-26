@@ -42,7 +42,7 @@ namespace Skybrud.Social.TwentyThree.Models {
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of <see cref="TwentyThreePhotoList"/> parsed from the specified <paramref name="json"/>.
+        /// Initializes a new instance of <see cref="TwentyThreePhotoList"/> parsed from the specified <paramref name="json"/> object.
         /// </summary>
         /// <param name="json">The <see cref="JObject"/> to be parsed.</param>
         protected TwentyThreeList(JObject json) : base(json) {

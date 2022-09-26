@@ -40,7 +40,7 @@ namespace Skybrud.Social.TwentyThree.Exceptions {
         /// Initializes a new exception based on the specified <paramref name="response"/>.
         /// </summary>
         /// <param name="response">The response received from the TwentyThree API.</param>
-        public TwentyThreeHttpException(IHttpResponse response) : base($"Invalid response received from the TwentyThree API (status: {(int)response.StatusCode})") {
+        public TwentyThreeHttpException(IHttpResponse response) : this(response, null) {
             Response = response;
         }
 

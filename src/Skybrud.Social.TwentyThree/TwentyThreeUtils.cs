@@ -37,6 +37,18 @@ namespace Skybrud.Social.TwentyThree {
             return field?.ToUnderscore();
         }
 
+        public static string ToString(TwentyThreeSpotType? type) {
+            return type?.ToUnderscore();
+        }
+
+        public static string ToString(TwentyThreeVideoParameter? video) {
+            return video switch {
+                TwentyThreeVideoParameter.OnlyVideos => "1",
+                TwentyThreeVideoParameter.IgnoreVideos => "0",
+                _ => null
+            };
+        }
+
         public static string GetEmbedCode(TwentyThreeSite site, TwentyThreePhoto photo) {
             return GetEmbedCode(site.Domain, photo.PhotoId, photo.Token);
         }

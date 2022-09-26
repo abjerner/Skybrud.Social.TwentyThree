@@ -2,7 +2,6 @@
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Social.TwentyThree.Models.Photos;
-using Skybrud.Social.TwentyThree.Models.Sites;
 
 namespace Skybrud.Social.TwentyThree.Models.Spots {
 

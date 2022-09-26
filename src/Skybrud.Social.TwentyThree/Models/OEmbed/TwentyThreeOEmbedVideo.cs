@@ -38,7 +38,7 @@ namespace Skybrud.Social.TwentyThree.Models.OEmbed {
             Duration = json.GetDouble("duration", TimeSpan.FromSeconds);
         }
 
-        public new static TwentyThreeOEmbedVideo Parse(JObject json) {
+        public static new TwentyThreeOEmbedVideo Parse(JObject json) {
             return json == null ? null : new TwentyThreeOEmbedVideo(json);
         }
 

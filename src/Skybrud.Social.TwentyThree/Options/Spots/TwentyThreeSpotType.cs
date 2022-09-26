@@ -9,8 +9,8 @@ namespace Skybrud.Social.TwentyThree.Options.Spots {
     /// </summary>
     public enum TwentyThreeSpotType {
 
-        All,
         Page,
+
         Widget
 
     }
