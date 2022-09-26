@@ -7,7 +7,7 @@ using Skybrud.Social.TwentyThree.Models.OEmbed;
 namespace Skybrud.Social.TwentyThree.Responses.OEmbed {
 
     /// <summary>
-    /// Class representing an OEmbed response received from the Twenty Three API.
+    /// Class representing an OEmbed response received from the TwentyThree API.
     /// </summary>
     public class TwentyThreeOEmbedResponse : TwentyThreeResponse<TwentyThreeOEmbed> {
 

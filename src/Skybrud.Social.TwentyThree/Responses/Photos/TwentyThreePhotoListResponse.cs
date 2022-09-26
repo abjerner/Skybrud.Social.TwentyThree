@@ -5,7 +5,7 @@ using Skybrud.Social.TwentyThree.Models.Photos;
 namespace Skybrud.Social.TwentyThree.Responses.Photos {
 
     /// <summary>
-    /// Class representing the response of a request to the Twenty Three API for getting information a list of photos/videos.
+    /// Class representing the response of a request to the TwentyThree API for getting information a list of photos/videos.
     /// </summary>
     public class TwentyThreePhotoListResponse : TwentyThreeResponse<TwentyThreePhotoList> {
 

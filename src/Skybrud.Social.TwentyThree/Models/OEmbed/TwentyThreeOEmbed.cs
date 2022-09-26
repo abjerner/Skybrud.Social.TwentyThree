@@ -7,7 +7,7 @@ using Skybrud.Essentials.Json.Extensions;
 namespace Skybrud.Social.TwentyThree.Models.OEmbed {
     
     /// <summary>
-    /// OEmbed details of a Twenty Three resource.
+    /// OEmbed details of a TwentyThree resource.
     /// </summary>
     /// <see>
     ///     <cref>https://oembed.com/</cref>

@@ -18,7 +18,7 @@ namespace Skybrud.Social.TwentyThree.Exceptions {
         public IHttpResponse Response { get; }
 
         /// <summary>
-        /// Gets the HTTP status code returned by the Twenty Three API.
+        /// Gets the HTTP status code returned by the TwentyThree API.
         /// </summary>
         public HttpStatusCode StatusCode => Response.StatusCode;
 

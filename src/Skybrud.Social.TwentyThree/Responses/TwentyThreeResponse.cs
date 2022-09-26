@@ -8,7 +8,7 @@ using Skybrud.Social.TwentyThree.Models;
 namespace Skybrud.Social.TwentyThree.Responses {
 
     /// <summary>
-    /// Class representing a response from the Twenty Three API.
+    /// Class representing a response from the TwentyThree API.
     /// </summary>
     public class TwentyThreeResponse : HttpResponseBase {
 
@@ -48,7 +48,7 @@ namespace Skybrud.Social.TwentyThree.Responses {
     }
 
     /// <summary>
-    /// Class representing a response from the Twenty Three API.
+    /// Class representing a response from the TwentyThree API.
     /// </summary>
     public class TwentyThreeResponse<T> : TwentyThreeResponse {
 

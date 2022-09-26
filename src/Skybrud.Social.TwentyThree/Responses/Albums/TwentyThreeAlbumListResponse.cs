@@ -5,7 +5,7 @@ using Skybrud.Social.TwentyThree.Models.Albums;
 namespace Skybrud.Social.TwentyThree.Responses.Albums {
 
     /// <summary>
-    /// Class representing the response of a request to the Twenty Three API for getting information a list of albums.
+    /// Class representing the response of a request to the TwentyThree API for getting information a list of albums.
     /// </summary>
     public class TwentyThreeAlbumListResponse : TwentyThreeResponse<TwentyThreeAlbumList> {
 

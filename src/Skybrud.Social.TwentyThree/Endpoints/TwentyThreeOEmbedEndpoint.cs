@@ -17,7 +17,7 @@ namespace Skybrud.Social.TwentyThree.Endpoints {
         #region Properties
 
         /// <summary>
-        /// Gets a reference to the Twenty Three service.
+        /// Gets a reference to the TwentyThree service.
         /// </summary>
         public TwentyThreeHttpService Service { get; }
 

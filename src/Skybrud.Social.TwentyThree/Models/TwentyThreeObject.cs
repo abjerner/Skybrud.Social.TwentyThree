@@ -4,7 +4,7 @@ using Skybrud.Essentials.Json;
 namespace Skybrud.Social.TwentyThree.Models {
 
     /// <summary>
-    /// Class representing a basic object from the Twenty Three API derived from an instance of <see cref="JObject"/>.
+    /// Class representing a basic object from the TwentyThree API derived from an instance of <see cref="JObject"/>.
     /// </summary>
     public class TwentyThreeObject : JsonObjectBase {
 

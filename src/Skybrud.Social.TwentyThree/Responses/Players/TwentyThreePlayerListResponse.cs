@@ -5,7 +5,7 @@ using Skybrud.Social.TwentyThree.Models.Players;
 namespace Skybrud.Social.TwentyThree.Responses.Players {
 
     /// <summary>
-    /// Class representing the response of a request to the Twenty Three API for getting information a list of players.
+    /// Class representing the response of a request to the TwentyThree API for getting information a list of players.
     /// </summary>
     public class TwentyThreePlayerListResponse : TwentyThreeResponse<TwentyThreePlayerList> {
         

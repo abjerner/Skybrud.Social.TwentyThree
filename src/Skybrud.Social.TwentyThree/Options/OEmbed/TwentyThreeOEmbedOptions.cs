@@ -8,7 +8,7 @@ using Skybrud.Essentials.Http.Options;
 namespace Skybrud.Social.TwentyThree.Options.OEmbed {
     
     /// <summary>
-    /// OEmbed options for a Twenty Three video.
+    /// OEmbed options for a TwentyThree video.
     /// </summary>
     /// <see>
     ///     <cref>https://www.twentythree.com/help/manage-oembed</cref>
