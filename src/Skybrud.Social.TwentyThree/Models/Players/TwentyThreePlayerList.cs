@@ -8,7 +8,7 @@ namespace Skybrud.Social.TwentyThree.Models.Players {
     /// <summary>
     /// Class representing a paginated list of <see cref="TwentyThreePlayer"/>.
     /// </summary>
-    public class TwentyThreePlayerList : TwentyThreeObject {
+    public class TwentyThreePlayerList : TwentyThreeList {
 
         #region Properties
 
