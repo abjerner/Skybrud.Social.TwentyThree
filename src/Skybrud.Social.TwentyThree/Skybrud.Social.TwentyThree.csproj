@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <VersionPrefix>1.1.0</VersionPrefix>
+    <VersionPrefix>1.1.1</VersionPrefix>
     <VersionSuffix Condition="'$(Configuration)'=='Debug'">build$([System.DateTime]::UtcNow.ToString(`yyyyMMddHHmm`))</VersionSuffix>
     <Company>Limbo</Company>
     <Product>Skybrud.Social</Product>
@@ -21,6 +21,7 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/abjerner/Skybrud.Social.TwentyThree</PackageProjectUrl>
     <PackageIcon>Limbo.png</PackageIcon>
+    <PackageReadmeFile>NUGET.md</PackageReadmeFile>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/abjerner/Skybrud.Social.TwentyThree</RepositoryUrl>
   </PropertyGroup>
@@ -33,6 +34,7 @@
   <!-- Include package icon for NuGet -->
   <ItemGroup>
     <Content Include="../build/Limbo.png" Pack="true" PackagePath="\" />
+    <Content Include="..\..\NUGET.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
   <!-- Generate XML documentation -->
