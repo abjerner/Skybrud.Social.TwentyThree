@@ -5,6 +5,8 @@ using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Essentials.Strings;
 using Skybrud.Essentials.Time;
+using Skybrud.Social.TwentyThree.Exceptions;
+using Skybrud.Social.TwentyThree.Extensions;
 
 // ReSharper disable InconsistentNaming
 #pragma warning disable CS1591
@@ -89,37 +91,41 @@ namespace Skybrud.Social.TwentyThree.Models.Photos {
         /// </summary>
         /// <param name="json">The <see cref="JObject"/> to be parsed.</param>
         protected TwentyThreePhoto(JObject json) : base(json) {
-            PhotoId = json.GetString("photo_id");
-            Title = json.GetString("title");
-            Token = json.GetString("token");
-            IsPublished = json.GetString("published_p", StringUtils.ParseBoolean);
-            PublishDate = json.GetInt32("publish_date_epoch", EssentialsTime.FromUnixTimeSeconds);
-            CreationDate = json.GetInt32("creation_date_epoch", EssentialsTime.FromUnixTimeSeconds);
-            ViewCount = json.GetInt64("view_count");
-            AbsoluteUrl = json.GetString("absolute_url");
-            VideoLength = json.GetDouble("video_length", TimeSpan.FromSeconds);
-            Original = TwentyThreeThumbnail.Parse(json, "original");
-            Quad16 = TwentyThreeThumbnail.Parse(json, "quad16");
-            Quad50 = TwentyThreeThumbnail.Parse(json, "quad50");
-            Quad75 = TwentyThreeThumbnail.Parse(json, "quad75");
-            Quad100 = TwentyThreeThumbnail.Parse(json, "quad100");
-            Medium = TwentyThreeThumbnail.Parse(json, "medium");
-            Portrait = TwentyThreeThumbnail.Parse(json, "portrait");
-            Standard = TwentyThreeThumbnail.Parse(json, "standard");
-            Large = TwentyThreeThumbnail.Parse(json, "large");
-            VideoMedium = TwentyThreeVideoFormat.Parse(json, "video_medium");
-            VideoHd = TwentyThreeVideoFormat.Parse(json, "video_hd");
-            Video1080p = TwentyThreeVideoFormat.Parse(json, "video_1080p");
-            Video4K = TwentyThreeVideoFormat.Parse(json, "video_4k");
-            VideoMobileH263Amr = TwentyThreeVideoFormat.Parse(json, "video_mobile_h263_amr");
-            VideoMobileH263Aac = TwentyThreeVideoFormat.Parse(json, "video_mobile_h263_aac");
-            VideoMobileMpeg4Amr = TwentyThreeVideoFormat.Parse(json, "video_mobile_mpeg4_amr");
-            VideoMobileHigh = TwentyThreeVideoFormat.Parse(json, "video_mobile_high");
-            Content = json.GetString("content");
-            ContentText = json.GetString("content_text");
-            Tags = json.GetStringArray("tags");
-            Thumbnails = new[] { Original, Quad16, Quad50, Quad75, Quad100, Medium, Portrait, Standard, Large }.Where(x => x != null).ToArray();
-            VideoFormats = new[] { VideoMedium, VideoHd, Video1080p, Video4K, VideoMobileH263Amr, VideoMobileH263Aac, VideoMobileMpeg4Amr, VideoMobileHigh }.Where(x => x != null).ToArray();
+            try {
+                PhotoId = json.GetString("photo_id");
+                Title = json.GetString("title");
+                Token = json.GetString("token");
+                IsPublished = json.GetString("published_p", StringUtils.ParseBoolean);
+                PublishDate = json.GetTimestamp("publish_date_epoch");
+                CreationDate = json.GetTimestamp("creation_date_epoch");
+                ViewCount = json.GetInt64("view_count");
+                AbsoluteUrl = json.GetString("absolute_url");
+                VideoLength = json.GetDouble("video_length", TimeSpan.FromSeconds);
+                Original = TwentyThreeThumbnail.Parse(json, "original");
+                Quad16 = TwentyThreeThumbnail.Parse(json, "quad16");
+                Quad50 = TwentyThreeThumbnail.Parse(json, "quad50");
+                Quad75 = TwentyThreeThumbnail.Parse(json, "quad75");
+                Quad100 = TwentyThreeThumbnail.Parse(json, "quad100");
+                Medium = TwentyThreeThumbnail.Parse(json, "medium");
+                Portrait = TwentyThreeThumbnail.Parse(json, "portrait");
+                Standard = TwentyThreeThumbnail.Parse(json, "standard");
+                Large = TwentyThreeThumbnail.Parse(json, "large");
+                VideoMedium = TwentyThreeVideoFormat.Parse(json, "video_medium");
+                VideoHd = TwentyThreeVideoFormat.Parse(json, "video_hd");
+                Video1080p = TwentyThreeVideoFormat.Parse(json, "video_1080p");
+                Video4K = TwentyThreeVideoFormat.Parse(json, "video_4k");
+                VideoMobileH263Amr = TwentyThreeVideoFormat.Parse(json, "video_mobile_h263_amr");
+                VideoMobileH263Aac = TwentyThreeVideoFormat.Parse(json, "video_mobile_h263_aac");
+                VideoMobileMpeg4Amr = TwentyThreeVideoFormat.Parse(json, "video_mobile_mpeg4_amr");
+                VideoMobileHigh = TwentyThreeVideoFormat.Parse(json, "video_mobile_high");
+                Content = json.GetString("content");
+                ContentText = json.GetString("content_text");
+                Tags = json.GetStringArray("tags");
+                Thumbnails = new[] { Original, Quad16, Quad50, Quad75, Quad100, Medium, Portrait, Standard, Large }.Where(x => x != null).ToArray();
+                VideoFormats = new[] { VideoMedium, VideoHd, Video1080p, Video4K, VideoMobileH263Amr, VideoMobileH263Aac, VideoMobileMpeg4Amr, VideoMobileHigh }.Where(x => x != null).ToArray();
+            } catch (Exception ex) {
+                throw new TwentyThreeJsonParseException("Failed parsing photo from JSON.", json, ex);
+            }
         }
 
         #endregion
