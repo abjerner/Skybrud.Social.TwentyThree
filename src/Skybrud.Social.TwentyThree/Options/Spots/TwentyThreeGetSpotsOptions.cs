@@ -5,7 +5,7 @@ using Skybrud.Essentials.Http.Options;
 #pragma warning disable CS1591
 
 namespace Skybrud.Social.TwentyThree.Options.Spots {
-    
+
     /// <summary>
     /// Options for getting a list of spots.
     /// </summary>
@@ -16,9 +16,9 @@ namespace Skybrud.Social.TwentyThree.Options.Spots {
 
         #region Properties
 
-        public string SpotId { get; set; }
+        public string? SpotId { get; set; }
 
-        public string Token { get; set; }
+        public string? Token { get; set; }
 
         public TwentyThreeSpotType? SpotType { get; set; }
 
@@ -45,15 +45,15 @@ namespace Skybrud.Social.TwentyThree.Options.Spots {
         #region Member methods
 
         public IHttpRequest GetRequest() {
-            
+
             IHttpQueryString query = new HttpQueryString();
 
-            if (string.IsNullOrWhiteSpace(SpotId) == false) query.Add("spot_id", SpotId);
-            if (string.IsNullOrWhiteSpace(Token) == false) query.Add("token", Token);
+            if (string.IsNullOrWhiteSpace(SpotId) == false) query.Add("spot_id", SpotId!);
+            if (string.IsNullOrWhiteSpace(Token) == false) query.Add("token", Token!);
 
-            if (SpotType is not null) query.Add("spot_type", TwentyThreeUtils.ToString(SpotType));
-            if (OrderBy is not null) query.Add("orderby", TwentyThreeUtils.ToString(OrderBy));
-            if (Order is not null) query.Add("order", TwentyThreeUtils.ToString(Order));
+            if (SpotType is not null) query.Add("spot_type", TwentyThreeUtils.ToString(SpotType)!);
+            if (OrderBy is not null) query.Add("orderby", TwentyThreeUtils.ToString(OrderBy)!);
+            if (Order is not null) query.Add("order", TwentyThreeUtils.ToString(Order)!);
 
             if (Page is not null) query.Add("p", Page);
             if (Size is not null) query.Add("size", Size);

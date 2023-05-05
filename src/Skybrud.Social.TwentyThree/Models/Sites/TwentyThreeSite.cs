@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
 namespace Skybrud.Social.TwentyThree.Models.Sites {
@@ -39,10 +40,10 @@ namespace Skybrud.Social.TwentyThree.Models.Sites {
         /// </summary>
         /// <param name="json">The <see cref="JObject"/> to be parsed.</param>
         protected TwentyThreeSite(JObject json) : base(json) {
-            SiteId = json.GetString("site_id");
-            Domain = json.GetString("domain");
-            SecureDomain = json.GetString("secure_domain");
-            SiteName = json.GetString("site_name");
+            SiteId = json.GetString("site_id")!;
+            Domain = json.GetString("domain")!;
+            SecureDomain = json.GetString("secure_domain")!;
+            SiteName = json.GetString("site_name")!;
         }
 
         #endregion
@@ -54,7 +55,7 @@ namespace Skybrud.Social.TwentyThree.Models.Sites {
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="TwentyThreeSite"/>.</returns>
-        public static TwentyThreeSite Parse(JObject json) {
+        public static TwentyThreeSite? Parse([NotNullIfNotNull(nameof(json))] JObject? json) {
             return json == null ? null : new TwentyThreeSite(json);
         }
 

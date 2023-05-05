@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
@@ -36,41 +37,41 @@ namespace Skybrud.Social.TwentyThree.Models.Photos {
 
         public EssentialsTime CreationDate { get; }
 
-        public TwentyThreeThumbnail Original { get; }
+        public TwentyThreeThumbnail? Original { get; }
 
-        public TwentyThreeThumbnail Quad16 { get; }
+        public TwentyThreeThumbnail? Quad16 { get; }
 
-        public TwentyThreeThumbnail Quad50 { get; }
+        public TwentyThreeThumbnail? Quad50 { get; }
 
-        public TwentyThreeThumbnail Quad75 { get; }
+        public TwentyThreeThumbnail? Quad75 { get; }
 
-        public TwentyThreeThumbnail Quad100 { get; }
+        public TwentyThreeThumbnail? Quad100 { get; }
 
-        public TwentyThreeThumbnail Medium { get; }
+        public TwentyThreeThumbnail? Medium { get; }
 
-        public TwentyThreeThumbnail Portrait { get; }
+        public TwentyThreeThumbnail? Portrait { get; }
 
-        public TwentyThreeThumbnail Standard { get; }
+        public TwentyThreeThumbnail? Standard { get; }
 
-        public TwentyThreeThumbnail Large { get; }
+        public TwentyThreeThumbnail? Large { get; }
 
         public IReadOnlyList<TwentyThreeThumbnail> Thumbnails { get; }
 
-        public TwentyThreeVideoFormat VideoMedium { get; }
+        public TwentyThreeVideoFormat? VideoMedium { get; }
 
-        public TwentyThreeVideoFormat VideoHd { get; }
+        public TwentyThreeVideoFormat? VideoHd { get; }
 
-        public TwentyThreeVideoFormat Video1080p { get; }
+        public TwentyThreeVideoFormat? Video1080p { get; }
 
-        public TwentyThreeVideoFormat Video4K { get; }
+        public TwentyThreeVideoFormat? Video4K { get; }
 
-        public TwentyThreeVideoFormat VideoMobileH263Amr { get; }
+        public TwentyThreeVideoFormat? VideoMobileH263Amr { get; }
 
-        public TwentyThreeVideoFormat VideoMobileH263Aac { get; }
+        public TwentyThreeVideoFormat? VideoMobileH263Aac { get; }
 
-        public TwentyThreeVideoFormat VideoMobileMpeg4Amr { get; }
+        public TwentyThreeVideoFormat? VideoMobileMpeg4Amr { get; }
 
-        public TwentyThreeVideoFormat VideoMobileHigh { get; }
+        public TwentyThreeVideoFormat? VideoMobileHigh { get; }
 
         public IReadOnlyList<TwentyThreeVideoFormat> VideoFormats { get; }
 
@@ -92,14 +93,14 @@ namespace Skybrud.Social.TwentyThree.Models.Photos {
         /// <param name="json">The <see cref="JObject"/> to be parsed.</param>
         protected TwentyThreePhoto(JObject json) : base(json) {
             try {
-                PhotoId = json.GetString("photo_id");
-                Title = json.GetString("title");
-                Token = json.GetString("token");
+                PhotoId = json.GetString("photo_id")!;
+                Title = json.GetString("title")!;
+                Token = json.GetString("token")!;
                 IsPublished = json.GetString("published_p", StringUtils.ParseBoolean);
-                PublishDate = json.GetTimestamp("publish_date_epoch");
-                CreationDate = json.GetTimestamp("creation_date_epoch");
+                PublishDate = json.GetTimestamp("publish_date_epoch")!;
+                CreationDate = json.GetTimestamp("creation_date_epoch")!;
                 ViewCount = json.GetInt64("view_count");
-                AbsoluteUrl = json.GetString("absolute_url");
+                AbsoluteUrl = json.GetString("absolute_url")!;
                 VideoLength = json.GetDouble("video_length", TimeSpan.FromSeconds);
                 Original = TwentyThreeThumbnail.Parse(json, "original");
                 Quad16 = TwentyThreeThumbnail.Parse(json, "quad16");
@@ -118,11 +119,11 @@ namespace Skybrud.Social.TwentyThree.Models.Photos {
                 VideoMobileH263Aac = TwentyThreeVideoFormat.Parse(json, "video_mobile_h263_aac");
                 VideoMobileMpeg4Amr = TwentyThreeVideoFormat.Parse(json, "video_mobile_mpeg4_amr");
                 VideoMobileHigh = TwentyThreeVideoFormat.Parse(json, "video_mobile_high");
-                Content = json.GetString("content");
-                ContentText = json.GetString("content_text");
+                Content = json.GetString("content")!;
+                ContentText = json.GetString("content_text")!;
                 Tags = json.GetStringArray("tags");
-                Thumbnails = new[] { Original, Quad16, Quad50, Quad75, Quad100, Medium, Portrait, Standard, Large }.Where(x => x != null).ToArray();
-                VideoFormats = new[] { VideoMedium, VideoHd, Video1080p, Video4K, VideoMobileH263Amr, VideoMobileH263Aac, VideoMobileMpeg4Amr, VideoMobileHigh }.Where(x => x != null).ToArray();
+                Thumbnails = new[] { Original, Quad16, Quad50, Quad75, Quad100, Medium, Portrait, Standard, Large }.Where(x => x != null).ToArray()!;
+                VideoFormats = new[] { VideoMedium, VideoHd, Video1080p, Video4K, VideoMobileH263Amr, VideoMobileH263Aac, VideoMobileMpeg4Amr, VideoMobileHigh }.Where(x => x != null).ToArray()!;
             } catch (Exception ex) {
                 throw new TwentyThreeJsonParseException("Failed parsing photo from JSON.", json, ex);
             }
@@ -137,7 +138,7 @@ namespace Skybrud.Social.TwentyThree.Models.Photos {
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="TwentyThreePhoto"/>.</returns>
-        public static TwentyThreePhoto Parse(JObject json) {
+        public static TwentyThreePhoto? Parse([NotNullIfNotNull(nameof(json))] JObject? json) {
             return json == null ? null : new TwentyThreePhoto(json);
         }
 

@@ -49,7 +49,7 @@ namespace Skybrud.Social.TwentyThree {
 
             // Set the client
             Client = client;
-            
+
             // Set the endpoints etc.
             Albums = new TwentyThreeAlbumsEndpoint(this);
             OEmbed = new TwentyThreeOEmbedEndpoint(this);

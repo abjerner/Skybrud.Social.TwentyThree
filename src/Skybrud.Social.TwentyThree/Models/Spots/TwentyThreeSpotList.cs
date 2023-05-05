@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Social.TwentyThree.Models.Photos;
@@ -26,7 +27,7 @@ namespace Skybrud.Social.TwentyThree.Models.Spots {
         /// </summary>
         /// <param name="json">The <see cref="JObject"/> to be parsed.</param>
         protected TwentyThreeSpotList(JObject json) : base(json) {
-            Spots = json.GetObjectArray("spots", TwentyThreeSpot.Parse);
+            Spots = json.GetObjectArray("spots", TwentyThreeSpot.Parse)!;
         }
 
         #endregion
@@ -38,7 +39,7 @@ namespace Skybrud.Social.TwentyThree.Models.Spots {
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="TwentyThreeSpotList"/>.</returns>
-        public static TwentyThreeSpotList Parse(JObject json) {
+        public static TwentyThreeSpotList? Parse([NotNullIfNotNull(nameof(json))] JObject? json) {
             return json == null ? null : new TwentyThreeSpotList(json);
         }
 

@@ -16,7 +16,7 @@ namespace Skybrud.Social.TwentyThree.OAuth {
         /// <summary>
         /// Gets or sets the domain to be used for all API requests - eg. <c>videos.skybrud.dk</c>.
         /// </summary>
-        public string Domain { get; set; }
+        public string? Domain { get; set; }
 
         /// <summary>
         /// Gets a reference to the raw <strong>Albums</strong> endpoint.
@@ -60,7 +60,7 @@ namespace Skybrud.Social.TwentyThree.OAuth {
         /// <param name="token">The access token of the user.</param>
         /// <param name="tokenSecret">The access token secret of the user.</param>
         /// <param name="callback">The callback URI used for authentication.</param>
-        public TwentyThreeOAuthClient(string consumerKey, string consumerSecret, string token, string tokenSecret, string callback) {
+        public TwentyThreeOAuthClient(string? consumerKey, string? consumerSecret, string? token, string? tokenSecret, string? callback) {
 
             // Common properties
             ConsumerKey = consumerKey;
@@ -96,7 +96,7 @@ namespace Skybrud.Social.TwentyThree.OAuth {
                 request.Url = "https://" + Domain + request.Url;
                 return;
             }
-            
+
             // Should we append the domain and schema to the URL?
             if (request.Url.StartsWith("/api/")) {
                 if (string.IsNullOrWhiteSpace(Domain)) throw new PropertyNotSetException(nameof(Domain));

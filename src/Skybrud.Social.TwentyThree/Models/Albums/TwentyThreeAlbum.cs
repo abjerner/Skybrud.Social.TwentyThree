@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
 namespace Skybrud.Social.TwentyThree.Models.Albums {
@@ -21,7 +22,7 @@ namespace Skybrud.Social.TwentyThree.Models.Albums {
         public string Title { get; }
 
         /// <summary>
-        /// gets the token of the album.
+        /// Gets the token of the album.
         /// </summary>
         public string Token { get; }
 
@@ -34,9 +35,9 @@ namespace Skybrud.Social.TwentyThree.Models.Albums {
         /// </summary>
         /// <param name="json">The <see cref="JObject"/> to be parsed.</param>
         protected TwentyThreeAlbum(JObject json) : base(json) {
-            AlbumId = json.GetString("album_id");
-            Title = json.GetString("title");
-            Token = json.GetString("token");
+            AlbumId = json.GetString("album_id")!;
+            Title = json.GetString("title")!;
+            Token = json.GetString("token")!;
         }
 
         #endregion
@@ -44,11 +45,11 @@ namespace Skybrud.Social.TwentyThree.Models.Albums {
         #region Static methods
 
         /// <summary>
-        /// Gets an instance of <see cref="TwentyThreeAlbum"/> from the specified <paramref name="json"/> object.
+        /// Returns an instance of <see cref="TwentyThreeAlbum"/> from the specified <paramref name="json"/> object.
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="TwentyThreeAlbum"/>.</returns>
-        public static TwentyThreeAlbum Parse(JObject json) {
+        public static TwentyThreeAlbum? Parse([NotNullIfNotNull(nameof(json))] JObject? json) {
             return json == null ? null : new TwentyThreeAlbum(json);
         }
 

@@ -42,7 +42,7 @@ namespace Skybrud.Social.TwentyThree.Responses {
             throw new TwentyThreeHttpException(response, TwentyThreeError.Parse(body));
 
         }
-        
+
         #endregion
 
     }
@@ -57,7 +57,7 @@ namespace Skybrud.Social.TwentyThree.Responses {
         /// <summary>
         /// Gets the body of the response.
         /// </summary>
-        public T Body { get; protected set; }
+        public T Body { get; protected set; } = default!;
 
         #endregion
 

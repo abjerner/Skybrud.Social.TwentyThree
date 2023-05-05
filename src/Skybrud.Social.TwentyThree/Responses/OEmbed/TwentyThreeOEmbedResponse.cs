@@ -17,7 +17,7 @@ namespace Skybrud.Social.TwentyThree.Responses.OEmbed {
         /// <param name="response">The instance of <see cref="IHttpResponse"/> representing the raw response.</param>
         public TwentyThreeOEmbedResponse(IHttpResponse response) : base(response) {
             Body = response.StatusCode switch {
-                HttpStatusCode.OK => JsonUtils.ParseJsonObject(response.Body, TwentyThreeOEmbed.Parse),
+                HttpStatusCode.OK => JsonUtils.ParseJsonObject(response.Body, TwentyThreeOEmbed.Parse)!,
                 _ => throw new TwentyThreeHttpException(response)
             };
         }

@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
 #pragma warning disable CS1591
 
 namespace Skybrud.Social.TwentyThree.Models.OEmbed {
-    
+
     /// <summary>
     /// OEmbed details of a TwentyThree video.
     /// </summary>
@@ -18,27 +19,27 @@ namespace Skybrud.Social.TwentyThree.Models.OEmbed {
     public class TwentyThreeOEmbedVideo : TwentyThreeOEmbed {
 
         public string PhotoId { get; }
-        
+
         public string AlbumId { get; }
 
         public int Width { get; }
 
         public int Height { get; }
-        
+
         public string Html { get; }
 
         public TimeSpan Duration { get; }
 
         public TwentyThreeOEmbedVideo(JObject json) : base(json) {
-            PhotoId = json.GetString("photo_id");
-            AlbumId = json.GetString("album_id");
+            PhotoId = json.GetString("photo_id")!;
+            AlbumId = json.GetString("album_id")!;
             Width = json.GetInt32("width");
             Height = json.GetInt32("height");
-            Html = json.GetString("html");
+            Html = json.GetString("html")!;
             Duration = json.GetDouble("duration", TimeSpan.FromSeconds);
         }
 
-        public static new TwentyThreeOEmbedVideo Parse(JObject json) {
+        public static new TwentyThreeOEmbedVideo? Parse([NotNullIfNotNull(nameof(json))] JObject? json) {
             return json == null ? null : new TwentyThreeOEmbedVideo(json);
         }
 

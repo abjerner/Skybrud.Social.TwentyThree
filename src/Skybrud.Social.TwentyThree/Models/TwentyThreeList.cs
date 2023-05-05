@@ -50,7 +50,7 @@ namespace Skybrud.Social.TwentyThree.Models {
             Size = json.GetInt32("size");
             Offset = json.GetInt32("offset");
             TotalCount = json.GetInt32("total_count");
-            Site = json.GetObject("site", TwentyThreeSite.Parse);
+            Site = json.GetObject("site", TwentyThreeSite.Parse)!;
         }
 
         #endregion

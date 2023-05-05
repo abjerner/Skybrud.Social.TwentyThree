@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
 namespace Skybrud.Social.TwentyThree.Models.Photos {
@@ -49,7 +50,7 @@ namespace Skybrud.Social.TwentyThree.Models.Photos {
             Width = json.GetInt32(prefix + "_width");
             Height = json.GetInt32(prefix + "_height");
             Size = json.GetInt64(prefix + "_size");
-            Url = json.GetString(prefix + "_download");
+            Url = json.GetString(prefix + "_download")!;
         }
 
         #endregion
@@ -62,7 +63,7 @@ namespace Skybrud.Social.TwentyThree.Models.Photos {
         /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <param name="prefix">The prefix pf the underlying JSON property.</param>
         /// <returns>An instance of <see cref="TwentyThreeVideoFormat"/>.</returns>
-        public static TwentyThreeVideoFormat Parse(JObject json, string prefix) {
+        public static TwentyThreeVideoFormat? Parse([NotNullIfNotNull(nameof(json))] JObject? json, string prefix) {
             if (json == null) return null;
             if (json.HasValue(prefix + "_download") == false) return null;
             return new TwentyThreeVideoFormat(json, prefix);

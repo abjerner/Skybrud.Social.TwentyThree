@@ -9,7 +9,7 @@
         /// Show sharing.
         /// </summary>
         Share,
-        
+
         /// <summary>
         /// Show recommended videos.
         /// </summary>

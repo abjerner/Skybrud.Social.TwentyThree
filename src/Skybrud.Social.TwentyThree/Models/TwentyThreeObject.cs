@@ -8,6 +8,16 @@ namespace Skybrud.Social.TwentyThree.Models {
     /// </summary>
     public class TwentyThreeObject : JsonObjectBase {
 
+        #region Properties
+
+        /// <summary>
+        /// Gets the internal <see cref="JObject"/> the object was created from.
+        /// </summary>
+        /// <remarks>This property is known not to be <see langword="null"/>, even though the parent <see cref="JsonObjectBase.JObject"/> property may be <see langword="null"/> in other cases.</remarks>
+        public new JObject JObject => base.JObject!;
+
+        #endregion
+
         #region Constructor
 
         /// <summary>

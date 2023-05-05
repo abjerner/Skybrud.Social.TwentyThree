@@ -18,7 +18,7 @@ namespace Skybrud.Social.TwentyThree.Exceptions {
         /// </summary>
         /// <param name="message">The message of the exception.</param>
         /// <param name="innerException">The inner exception.</param>
-        public TwentyThreeException(string message, Exception innerException) : base(message, innerException) { }
+        public TwentyThreeException(string message, Exception? innerException) : base(message, innerException) { }
 
     }
 

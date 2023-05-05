@@ -6,7 +6,7 @@ using Skybrud.Essentials.Http.Options;
 #pragma warning disable CS1591
 
 namespace Skybrud.Social.TwentyThree.Options.OEmbed {
-    
+
     /// <summary>
     /// OEmbed options for a TwentyThree video.
     /// </summary>
@@ -15,7 +15,7 @@ namespace Skybrud.Social.TwentyThree.Options.OEmbed {
     /// </see>
     public class TwentyThreeOEmbedOptions : IHttpRequestOptions {
 
-        public string Url { get; set; }
+        public string? Url { get; set; }
 
         public int MaxWidth { get; set; }
 
@@ -23,10 +23,10 @@ namespace Skybrud.Social.TwentyThree.Options.OEmbed {
 
         public bool? AutoPlay { get; set; }
 
-        public string PlayerId { get; set; }
-        
+        public string? PlayerId { get; set; }
+
         public TwentyThreeOEmbedOptions() { }
-        
+
         public TwentyThreeOEmbedOptions(string url) {
             Url = url;
         }
@@ -39,11 +39,11 @@ namespace Skybrud.Social.TwentyThree.Options.OEmbed {
                 {"url", Url},
                 {"format", "json"}
             };
-            
+
             if (MaxWidth > 0) query.Add("maxwidth", MaxWidth);
             if (MaxHeight > 0) query.Add("maxheight", MaxHeight);
             if (AutoPlay is not null) query.Add("autoplay", AutoPlay.Value);
-            if (!string.IsNullOrWhiteSpace(PlayerId)) query.Add("player_id", PlayerId);
+            if (!string.IsNullOrWhiteSpace(PlayerId)) query.Add("player_id", PlayerId!);
 
             // Initialize a new request
             return HttpRequest.Get("/oembed", query);

@@ -19,7 +19,7 @@ namespace Skybrud.Social.TwentyThree.Exceptions {
         /// <param name="message">The exception message.</param>
         /// <param name="token">The <see cref="JToken"/> that triggered the exception.</param>
         /// <param name="innerException">The inner exception, if any.</param>
-        public TwentyThreeJsonParseException(string message, JToken token, Exception innerException) : base(message, innerException) {
+        public TwentyThreeJsonParseException(string message, JToken token, Exception? innerException) : base(message, innerException) {
             Token = token;
         }
 

@@ -14,12 +14,12 @@ namespace Skybrud.Social.TwentyThree.Responses.Photos {
         /// </summary>
         /// <param name="response">The instance of <see cref="IHttpResponse"/> representing the raw response.</param>
         public TwentyThreePhotoListResponse(IHttpResponse response) : base(response) {
-            
+
             // Validate the response
             ValidateResponse(response, out JObject body);
 
             // Parse the response body
-            Body = TwentyThreePhotoList.Parse(body);
+            Body = TwentyThreePhotoList.Parse(body)!;
 
         }
 

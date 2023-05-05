@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
 namespace Skybrud.Social.TwentyThree.Models.Players {
@@ -34,8 +35,8 @@ namespace Skybrud.Social.TwentyThree.Models.Players {
         /// </summary>
         /// <param name="json">The <see cref="JObject"/> to be parsed.</param>
         protected TwentyThreePlayer(JObject json) : base(json) {
-            PlayerId = json.GetString("player_id");
-            PlayerName = json.GetString("player_name");
+            PlayerId = json.GetString("player_id")!;
+            PlayerName = json.GetString("player_name")!;
             IsDefault = json.GetBoolean("default_p");
         }
 
@@ -48,7 +49,7 @@ namespace Skybrud.Social.TwentyThree.Models.Players {
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="TwentyThreePlayer"/>.</returns>
-        public static TwentyThreePlayer Parse(JObject json) {
+        public static TwentyThreePlayer? Parse([NotNullIfNotNull(nameof(json))] JObject? json) {
             return json == null ? null : new TwentyThreePlayer(json);
         }
 

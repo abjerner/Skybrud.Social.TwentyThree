@@ -3,7 +3,7 @@ using Skybrud.Essentials.Http.Collections;
 using Skybrud.Essentials.Http.Options;
 
 namespace Skybrud.Social.TwentyThree.Options.Players {
-    
+
     /// <summary>
     /// Options for getting a list of players.
     /// </summary>
@@ -40,7 +40,7 @@ namespace Skybrud.Social.TwentyThree.Options.Players {
             return HttpRequest.Get("/api/player/list", query);
 
         }
-        
+
         #endregion
 
     }

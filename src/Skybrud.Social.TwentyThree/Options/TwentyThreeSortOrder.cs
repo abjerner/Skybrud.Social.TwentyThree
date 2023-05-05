@@ -9,7 +9,7 @@
         /// Indicates that results should be sorted in asscending order.
         /// </summary>
         Ascending,
-        
+
         /// <summary>
         /// Indicates that results should be sorted in descending order.
         /// </summary>

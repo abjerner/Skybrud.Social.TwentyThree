@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft;
 using Skybrud.Essentials.Json.Extensions;
+using System.Diagnostics.CodeAnalysis;
 
 #pragma warning disable CS1591
 
@@ -28,11 +29,11 @@ namespace Skybrud.Social.TwentyThree.Models {
         #region Constructor
 
         protected TwentyThreeError(JObject json) : base(json) {
-            Status = json.GetString("status");
-            Message = json.GetString("message");
-            Code = json.GetString("code");
-            PermissionLevel = json.GetString("permission_level");
-            Endpoint = json.GetString("endpoint");
+            Status = json.GetString("status")!;
+            Message = json.GetString("message")!;
+            Code = json.GetString("code")!;
+            PermissionLevel = json.GetString("permission_level")!;
+            Endpoint = json.GetString("endpoint")!;
         }
 
         #endregion
@@ -44,7 +45,7 @@ namespace Skybrud.Social.TwentyThree.Models {
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="TwentyThreeError"/>.</returns>
-        public static TwentyThreeError Parse(JObject json) {
+        public static TwentyThreeError? Parse([NotNullIfNotNull(nameof(json))] JObject? json) {
             return json == null ? null : new TwentyThreeError(json);
         }
 

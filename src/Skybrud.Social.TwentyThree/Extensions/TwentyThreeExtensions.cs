@@ -10,7 +10,7 @@ namespace Skybrud.Social.TwentyThree.Extensions {
 
         #region Member methods
 
-        public static EssentialsTime GetTimestamp(this JObject json, string property) {
+        public static EssentialsTime? GetTimestamp(this JObject? json, string property) {
             try {
                 return json.GetDouble(property, EssentialsTime.FromUnixTimeSeconds);
             } catch (Exception ex) {

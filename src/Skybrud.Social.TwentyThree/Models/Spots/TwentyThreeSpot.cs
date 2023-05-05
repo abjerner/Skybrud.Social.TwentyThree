@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
 #pragma warning disable CS1591
@@ -39,15 +40,15 @@ namespace Skybrud.Social.TwentyThree.Models.Spots {
         /// </summary>
         /// <param name="json">The <see cref="JObject"/> to be parsed.</param>
         protected TwentyThreeSpot(JObject json) : base(json) {
-            SpotId = json.GetString("spot_id");
-            SpotName = json.GetString("spot_name");
-            SpotType = json.GetString("spot_type");
-            SpotDesign = json.GetString("spot_design");
-            SpotLayout = json.GetString("spot_layout");
-            SpotSelection = json.GetString("spot_selection");
+            SpotId = json.GetString("spot_id")!;
+            SpotName = json.GetString("spot_name")!;
+            SpotType = json.GetString("spot_type")!;
+            SpotDesign = json.GetString("spot_design")!;
+            SpotLayout = json.GetString("spot_layout")!;
+            SpotSelection = json.GetString("spot_selection")!;
             VideoCount = json.GetInt32("video_count");
-            Token = json.GetString("token");
-            IncludeHtml = json.GetString("include_html");
+            Token = json.GetString("token")!;
+            IncludeHtml = json.GetString("include_html")!;
         }
 
         #endregion
@@ -59,7 +60,7 @@ namespace Skybrud.Social.TwentyThree.Models.Spots {
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="TwentyThreeSpot"/>.</returns>
-        public static TwentyThreeSpot Parse(JObject json) {
+        public static TwentyThreeSpot? Parse([NotNullIfNotNull(nameof(json))] JObject? json) {
             return json == null ? null : new TwentyThreeSpot(json);
         }
 

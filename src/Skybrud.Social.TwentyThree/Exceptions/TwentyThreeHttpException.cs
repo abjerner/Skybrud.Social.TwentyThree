@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Net;
 using Skybrud.Essentials.Http;
 using Skybrud.Essentials.Http.Exceptions;
 using Skybrud.Social.TwentyThree.Models;
@@ -25,17 +26,18 @@ namespace Skybrud.Social.TwentyThree.Exceptions {
         /// <summary>
         /// Gets the <see cref="TwentyThreeError"/> of the exception, if any.
         /// </summary>
-        public TwentyThreeError Error { get; }
+        public TwentyThreeError? Error { get; }
 
         /// <summary>
         /// Gets whether the exception has a <see cref="TwentyThreeError"/>.
         /// </summary>
+        [MemberNotNullWhen(true, nameof(Error))]
         public bool HasError => Error != null;
 
         #endregion
 
         #region Constructors
-        
+
         /// <summary>
         /// Initializes a new exception based on the specified <paramref name="response"/>.
         /// </summary>
@@ -49,11 +51,10 @@ namespace Skybrud.Social.TwentyThree.Exceptions {
         /// </summary>
         /// <param name="response">The response received from the TwentyThree API.</param>
         /// <param name="error">The error message.</param>
-        public TwentyThreeHttpException(IHttpResponse response, TwentyThreeError error) : base($"Invalid response received from the TwentyThree API (status: {((int)response.StatusCode)})") {
+        public TwentyThreeHttpException(IHttpResponse response, TwentyThreeError? error) : base($"Invalid response received from the TwentyThree API (status: {((int)response.StatusCode)})") {
             Response = response;
             Error = error;
         }
-
 
         #endregion
 
