@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Http;
-using Skybrud.Essentials.Json;
+using Skybrud.Essentials.Json.Newtonsoft;
 using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Social.TwentyThree.Exceptions;
 using Skybrud.Social.TwentyThree.Models;

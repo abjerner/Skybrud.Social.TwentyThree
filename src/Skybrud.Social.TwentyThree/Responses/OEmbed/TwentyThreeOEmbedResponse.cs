@@ -1,6 +1,6 @@
 ﻿using System.Net;
 using Skybrud.Essentials.Http;
-using Skybrud.Essentials.Json;
+using Skybrud.Essentials.Json.Newtonsoft;
 using Skybrud.Social.TwentyThree.Exceptions;
 using Skybrud.Social.TwentyThree.Models.OEmbed;
 
