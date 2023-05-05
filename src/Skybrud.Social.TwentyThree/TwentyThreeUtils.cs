@@ -9,6 +9,7 @@ using Skybrud.Social.TwentyThree.Options.Albums;
 using Skybrud.Social.TwentyThree.Options.Embed;
 using Skybrud.Social.TwentyThree.Options.Photos;
 using Skybrud.Social.TwentyThree.Options.Spots;
+using Skybrud.Social.TwentyThree.Options.Tags;
 
 #pragma warning disable CS1591
 
@@ -41,6 +42,10 @@ namespace Skybrud.Social.TwentyThree {
 
         public static string? ToString([NotNullIfNotNull(nameof(type))] TwentyThreeSpotType? type) {
             return type?.ToUnderscore();
+        }
+
+        public static string? ToString([NotNullIfNotNull(nameof(field))] TwentyThreeTagSortField? field) {
+            return field?.ToUnderscore();
         }
 
         public static string? ToString(TwentyThreeVideoParameter? video) {

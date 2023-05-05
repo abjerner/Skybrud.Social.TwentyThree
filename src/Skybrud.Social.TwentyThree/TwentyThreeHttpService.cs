@@ -41,6 +41,11 @@ namespace Skybrud.Social.TwentyThree {
         /// </summary>
         public TwentyThreeSpotsEndpoint Spots { get; }
 
+        /// <summary>
+        /// Gets a reference to the <strong>Tags</strong> endpoint.
+        /// </summary>
+        public TwentyThreeTagsEndpoint Tags { get; }
+
         #endregion
 
         #region Constructors
@@ -56,6 +61,7 @@ namespace Skybrud.Social.TwentyThree {
             Photos = new TwentyThreePhotosEndpoint(this);
             Players = new TwentyThreePlayersEndpoint(this);
             Spots = new TwentyThreeSpotsEndpoint(this);
+            Tags = new TwentyThreeTagsEndpoint(this);
 
         }
 

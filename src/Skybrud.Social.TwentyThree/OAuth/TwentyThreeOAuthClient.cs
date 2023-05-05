@@ -43,6 +43,11 @@ namespace Skybrud.Social.TwentyThree.OAuth {
         /// </summary>
         public TwentyThreeSpotsRawEndpoint Spots { get; }
 
+        /// <summary>
+        /// Gets a reference to the raw <strong>Tags</strong> endpoint.
+        /// </summary>
+        public TwentyThreeTagsRawEndpoint Tags { get; }
+
         #endregion
 
         #region Constructors
@@ -75,6 +80,7 @@ namespace Skybrud.Social.TwentyThree.OAuth {
             Photos = new TwentyThreePhotosRawEndpoint(this);
             Players = new TwentyThreePlayersRawEndpoint(this);
             Spots = new TwentyThreeSpotsRawEndpoint(this);
+            Tags = new TwentyThreeTagsRawEndpoint(this);
 
             // Specific to Video23
             RequestTokenUrl = "http://api.visualplatform.net/oauth/request_token";

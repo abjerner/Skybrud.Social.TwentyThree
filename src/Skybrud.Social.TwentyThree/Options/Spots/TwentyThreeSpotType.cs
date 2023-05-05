@@ -1,4 +1,5 @@
 ﻿using Skybrud.Social.TwentyThree.Models.Spots;
+using Skybrud.Social.TwentyThree.Models.Tags;
 
 #pragma warning disable CS1591
 
