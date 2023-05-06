@@ -74,7 +74,7 @@ namespace Skybrud.Social.TwentyThree.Options.Photos {
         #region Member methods
 
         /// <inheritdoc />
-        public IHttpRequest GetRequest() {
+        public virtual IHttpRequest GetRequest() {
 
             IHttpQueryString query = new HttpQueryString();
 

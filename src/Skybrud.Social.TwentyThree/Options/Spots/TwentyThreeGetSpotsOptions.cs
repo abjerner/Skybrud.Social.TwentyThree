@@ -44,7 +44,7 @@ namespace Skybrud.Social.TwentyThree.Options.Spots {
 
         #region Member methods
 
-        public IHttpRequest GetRequest() {
+        public virtual IHttpRequest GetRequest() {
 
             IHttpQueryString query = new HttpQueryString();
 

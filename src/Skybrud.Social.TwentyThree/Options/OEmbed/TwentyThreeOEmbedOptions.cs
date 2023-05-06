@@ -31,7 +31,7 @@ namespace Skybrud.Social.TwentyThree.Options.OEmbed {
             Url = url;
         }
 
-        public IHttpRequest GetRequest() {
+        public virtual IHttpRequest GetRequest() {
 
             if (string.IsNullOrWhiteSpace(Url)) throw new PropertyNotSetException(nameof(Url));
 

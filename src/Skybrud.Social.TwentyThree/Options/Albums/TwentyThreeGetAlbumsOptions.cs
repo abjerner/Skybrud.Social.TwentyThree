@@ -59,7 +59,7 @@ namespace Skybrud.Social.TwentyThree.Options.Albums {
         #region Member methods
 
         /// <inheritdoc />
-        public IHttpRequest GetRequest() {
+        public virtual IHttpRequest GetRequest() {
 
             IHttpQueryString query = new HttpQueryString();
 

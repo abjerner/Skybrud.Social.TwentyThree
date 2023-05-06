@@ -1,5 +1,4 @@
-﻿using Skybrud.Essentials.Collections;
-using Skybrud.Essentials.Http;
+﻿using Skybrud.Essentials.Http;
 using Skybrud.Essentials.Http.Collections;
 using Skybrud.Essentials.Http.Options;
 
@@ -88,7 +87,7 @@ namespace Skybrud.Social.TwentyThree.Options.Tags {
         #region Member methods
 
         /// <inheritdoc />
-        public IHttpRequest GetRequest() {
+        public virtual IHttpRequest GetRequest() {
 
             IHttpQueryString query = new HttpQueryString();
 

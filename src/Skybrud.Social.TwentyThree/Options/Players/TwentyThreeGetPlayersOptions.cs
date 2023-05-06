@@ -29,7 +29,7 @@ namespace Skybrud.Social.TwentyThree.Options.Players {
         #region Member methods
 
         /// <inheritdoc />
-        public IHttpRequest GetRequest() {
+        public virtual IHttpRequest GetRequest() {
 
             IHttpQueryString query = new HttpQueryString();
 
