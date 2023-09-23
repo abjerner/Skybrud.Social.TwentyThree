@@ -1,18 +1,48 @@
 # Skybrud.Social.TwentyThree
 
-**Skybrud.Social.TwentyThree** is a .NET implementation of the TwentyThree API. The package will handle all the technical parts and API communication so you don't have to.
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/abjerner/Skybrud.Social.TwentyThree/blob/v1/main/LICENSE.md)
+[![NuGet](https://img.shields.io/nuget/vpre/Skybrud.Social.TwentyThree.svg)](https://www.nuget.org/packages/Skybrud.Social.TwentyThree)
+[![NuGet](https://img.shields.io/nuget/dt/Skybrud.Social.TwentyThree.svg)](https://www.nuget.org/packages/Skybrud.Social.TwentyThree)
 
-### Installation
+.NET API wrapper and implementation of the [**TwentyThree API**](https://www.twentythree.com/api/overview). The package will handle all the technical parts and API communication so you don't have to.
 
-You can download this package from either NuGet (recommended) or download a ZIP file with the neccessary files from here on GitHub:
+<table>
+  <tr>
+    <td><strong>License:</strong></td>
+    <td><a href="https://github.com/abjerner/TwentyThree/blob/v1/main/LICENSE.md"><strong>MIT License</strong></a></td>
+  </tr>
+  <tr>
+    <td><strong>Target Framework:</strong></td>
+    <td>
+      .NET 4.5, .NET 4.6, .NET 4.7 and .NET Standard 2.0
+    </td>
+  </tr>
+</table>
 
-1. [**NuGet Package**][NuGetPackage]  
-Install this NuGet package in your Visual Studio project. Makes updating easy.
 
-2. [**ZIP file**][GitHubRelease]  
-Grab a ZIP file of the latest release; unzip and move the files to the bin directory of your project.
 
-### Dependencies
+
+<br /><br />
+
+## Installation
+
+The package is only available via [**NuGet**](https://www.nuget.org/packages/Skybrud.Social.TwentyThree/1.1.2). To install the package, you can either use the .NET CLI:
+
+```
+dotnet add package Skybrud.Social.TwentyThree --version 1.1.2
+```
+
+or the NuGet Package Manager:
+
+```
+Install-Package Skybrud.Social.TwentyThree -Version 1.1.2
+```
+
+
+
+
+<br /><br />
+## Dependencies
 
 - [**Skybrud.Essentials.Http**](https://github.com/skybrud/Skybrud.Essentials.Http)<br />A .NET library for making HTTP requests.
 
@@ -20,17 +50,29 @@ Grab a ZIP file of the latest release; unzip and move the files to the bin direc
 
   - [**Skybrud.Essentials**](https://github.com/skybrud/Skybrud.Essentials)<br />A package with logic for handling various common tasks in .NET.
 
-### Found a bug? Have a question?
 
-* Please feel free to [**create an issue**][Issues], and I will get back to you ;)
 
+
+<br /><br />
+## Found a bug? Have a question?
+Please feel free to [**create an issue**][Issues], and I will get back to you ;)
+
+
+
+
+<br /><br />
 ### Changelog
-
 The [**releases page**][Releases] lists all releases, and each there will be some information for each release on the most significant changes.
 
-### Documentation
 
+
+<br /><br />
+### Getting started
 You can find documentation and examples on how to use this package at the [**Skybrud.Social website**][Website]. The package isn't yet fully documented, so feel free to [**create an issue**][Issues] if I've missed something.
+
+
+
+
 
 [Website]: http://social.skybrud.dk/facebook/
 [NuGetPackage]: https://www.nuget.org/packages/Skybrud.Social.TwentyThree
