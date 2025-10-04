@@ -3,6 +3,7 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/abjerner/Skybrud.Social.TwentyThree/blob/v1/main/LICENSE.md)
 [![NuGet](https://img.shields.io/nuget/vpre/Skybrud.Social.TwentyThree.svg)](https://www.nuget.org/packages/Skybrud.Social.TwentyThree)
 [![NuGet](https://img.shields.io/nuget/dt/Skybrud.Social.TwentyThree.svg)](https://www.nuget.org/packages/Skybrud.Social.TwentyThree)
+[![Skybrud.Social.TwentyThree at packages.limbo.works](https://img.shields.io/badge/limbo-packages-blue)](https://packages.limbo.works/skybrud.social.twentythree/)
 
 .NET API wrapper and implementation of the [**TwentyThree API**](https://www.twentythree.com/api/overview). The package will handle all the technical parts and API communication so you don't have to.
 
@@ -26,16 +27,16 @@
 
 ## Installation
 
-The package is only available via [**NuGet**](https://www.nuget.org/packages/Skybrud.Social.TwentyThree/1.1.2). To install the package, you can either use the .NET CLI:
+The package is only available via [**NuGet**](https://www.nuget.org/packages/Skybrud.Social.TwentyThree). To install the package, you can either use the .NET CLI:
 
 ```
-dotnet add package Skybrud.Social.TwentyThree --version 1.1.2
+dotnet add package Skybrud.Social.TwentyThree
 ```
 
 or the NuGet Package Manager:
 
 ```
-Install-Package Skybrud.Social.TwentyThree -Version 1.1.2
+Install-Package Skybrud.Social.TwentyThree
 ```
 
 
@@ -74,7 +75,7 @@ You can find documentation and examples on how to use this package at the [**Sky
 
 
 
-[Website]: http://social.skybrud.dk/facebook/
+[Website]: http://social.skybrud.dk/twentythree/
 [NuGetPackage]: https://www.nuget.org/packages/Skybrud.Social.TwentyThree
 [GitHubRelease]: https://github.com/abjerner/Skybrud.Social.TwentyThree/releases/latest
 [Releases]: https://github.com/abjerner/Skybrud.Social.TwentyThree/releases

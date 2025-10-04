@@ -10,8 +10,9 @@
     <VersionPrefix>1.1.2</VersionPrefix>
     <VersionSuffix Condition="'$(Configuration)'=='Debug'">build$([System.DateTime]::UtcNow.ToString(`yyyyMMddHHmm`))</VersionSuffix>
     <Company>Limbo</Company>
+    <Authors>Anders Bjerner</Authors>
     <Product>Skybrud.Social</Product>
-    <Copyright>Copyright © 2023</Copyright>
+    <Copyright>Copyright © $([System.DateTime]::UtcNow.ToString(`yyyy`))</Copyright>
     <Description>Authentication and service implementation for the TwentyThree API.</Description>
   </PropertyGroup>
 
@@ -20,7 +21,7 @@
     <PackageId>Skybrud.Social.TwentyThree</PackageId>
     <PackageTags>TwentyThree, Skybrud, Social, OAuth, JSON, Limbo</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/abjerner/Skybrud.Social.TwentyThree</PackageProjectUrl>
+    <PackageProjectUrl>https://packages.limbo.works/skybrud.social.twentythree/</PackageProjectUrl>
     <PackageIcon>Limbo.png</PackageIcon>
     <PackageReadmeFile>NUGET.md</PackageReadmeFile>
     <RepositoryType>git</RepositoryType>
