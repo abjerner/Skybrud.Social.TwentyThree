@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
-using Skybrud.Essentials.Json.Extensions;
+using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Social.TwentyThree.Models.Photos;
 
 namespace Skybrud.Social.TwentyThree.Models.Tags {
@@ -27,7 +27,7 @@ namespace Skybrud.Social.TwentyThree.Models.Tags {
         /// </summary>
         /// <param name="json">The <see cref="JObject"/> to be parsed.</param>
         protected TwentyThreeTagList(JObject json) : base(json) {
-            Tags = json.GetArrayItems("tags", TwentyThreeTag.Parse)!;
+            Tags = json.GetArrayItems("tags", TwentyThreeTag.Parse);
         }
 
         #endregion

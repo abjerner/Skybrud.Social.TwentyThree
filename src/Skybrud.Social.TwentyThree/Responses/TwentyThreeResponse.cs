@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Http;
 using Skybrud.Essentials.Json.Newtonsoft;
-using Skybrud.Essentials.Json.Extensions;
+using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Social.TwentyThree.Exceptions;
 using Skybrud.Social.TwentyThree.Models;
 
@@ -28,7 +28,7 @@ namespace Skybrud.Social.TwentyThree.Responses {
         /// Validates the specified <paramref name="response"/>.
         /// </summary>
         /// <param name="response">The response to be validated.</param>
-        /// <param name="body">An instacne of <see cref="JObject"/> representing the response body.</param>
+        /// <param name="body">An instance of <see cref="JObject"/> representing the response body.</param>
         public static void ValidateResponse(IHttpResponse response, out JObject body) {
 
             // The API always returns a 200 status code - even for errors

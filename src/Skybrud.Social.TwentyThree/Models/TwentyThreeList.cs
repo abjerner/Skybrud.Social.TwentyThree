@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
-using Skybrud.Essentials.Json.Extensions;
+using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Social.TwentyThree.Models.Photos;
 using Skybrud.Social.TwentyThree.Models.Sites;
 

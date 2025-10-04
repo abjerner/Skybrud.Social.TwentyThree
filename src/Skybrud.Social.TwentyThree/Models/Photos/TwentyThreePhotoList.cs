@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
-using Skybrud.Essentials.Json.Extensions;
+using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
 namespace Skybrud.Social.TwentyThree.Models.Photos {
 
@@ -26,7 +26,7 @@ namespace Skybrud.Social.TwentyThree.Models.Photos {
         /// </summary>
         /// <param name="json">The <see cref="JObject"/> to be parsed.</param>
         protected TwentyThreePhotoList(JObject json) : base(json) {
-            Photos = json.GetObjectArray("photos", TwentyThreePhoto.Parse)!;
+            Photos = json.GetArrayItems("photos", TwentyThreePhoto.Parse);
         }
 
         #endregion

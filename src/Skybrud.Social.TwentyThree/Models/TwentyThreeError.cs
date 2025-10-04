@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft;
-using Skybrud.Essentials.Json.Extensions;
+using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using System.Diagnostics.CodeAnalysis;
 
 #pragma warning disable CS1591

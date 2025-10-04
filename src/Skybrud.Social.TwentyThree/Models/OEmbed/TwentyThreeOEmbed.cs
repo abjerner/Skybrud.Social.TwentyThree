@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
-using Skybrud.Essentials.Json.Extensions;
+using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
 #pragma warning disable CS1591
 
@@ -33,8 +33,6 @@ namespace Skybrud.Social.TwentyThree.Models.OEmbed {
 
         public TimeSpan CacheAge { get; }
 
-        public bool HasCacheAge { get; }
-
         public string ThumbnailUrl { get; }
 
         public int ThumbnailWidth { get; }
@@ -51,7 +49,6 @@ namespace Skybrud.Social.TwentyThree.Models.OEmbed {
             ProviderName = json.GetString("provider_name")!;
             ProviderUrl = json.GetString("provider_url")!;
             CacheAge = json.GetDouble("cache_age", TimeSpan.FromSeconds);
-            HasCacheAge = json.HasValue("cache_age");
             ThumbnailWidth = json.GetInt32("thumbnail_width");
             ThumbnailHeight = json.GetInt32("thumbnail_height");
             ThumbnailUrl = json.GetString("thumbnail_url")!;

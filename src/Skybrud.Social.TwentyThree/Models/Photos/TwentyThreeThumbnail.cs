@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
-using Skybrud.Essentials.Json.Extensions;
+using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
 namespace Skybrud.Social.TwentyThree.Models.Photos {
 
@@ -65,7 +65,7 @@ namespace Skybrud.Social.TwentyThree.Models.Photos {
         /// <returns>An instance of <see cref="TwentyThreeThumbnail"/>.</returns>
         public static TwentyThreeThumbnail? Parse([NotNullIfNotNull(nameof(json))] JObject? json, string prefix) {
             if (json == null) return null;
-            return json.HasValue($"{prefix}_download") == false ? null : new TwentyThreeThumbnail(json, prefix);
+            return json.GetString($"{prefix}_download") is null ? null : new TwentyThreeThumbnail(json, prefix);
         }
 
         #endregion

@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
-using Skybrud.Essentials.Json.Extensions;
+using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
 namespace Skybrud.Social.TwentyThree.Models.Photos {
 
@@ -65,7 +65,7 @@ namespace Skybrud.Social.TwentyThree.Models.Photos {
         /// <returns>An instance of <see cref="TwentyThreeVideoFormat"/>.</returns>
         public static TwentyThreeVideoFormat? Parse([NotNullIfNotNull(nameof(json))] JObject? json, string prefix) {
             if (json == null) return null;
-            if (json.HasValue(prefix + "_download") == false) return null;
+            if (json.GetString(prefix + "_download") is null) return null;
             return new TwentyThreeVideoFormat(json, prefix);
         }
 
