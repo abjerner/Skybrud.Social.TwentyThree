@@ -34,7 +34,7 @@ namespace Skybrud.Social.TwentyThree.Options.Photos {
         /// <see cref="PhotoId"/> is set.
         ///
         /// Specifying either an <c>album_id/token</c> or a <c>photo_id/token</c> will give the client access to
-        /// information about the <c>video/photo/album/channel</c> irregardless of permission level. When requesting a
+        /// information about the <c>video/photo/album/channel</c> regardless of permission level. When requesting a
         /// single photo object, tokens can be explicitly time-limited.
         /// </summary>
         public string? Token { get; set; }
