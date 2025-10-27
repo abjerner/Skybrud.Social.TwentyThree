@@ -31,6 +31,11 @@ namespace Skybrud.Social.TwentyThree.Models.Sites {
         /// </summary>
         public string SiteName { get; }
 
+        /// <summary>
+        /// Gets the key (alias) of the site.
+        /// </summary>
+        public string SiteKey { get; }
+
         #endregion
 
         #region Constructors
@@ -44,6 +49,7 @@ namespace Skybrud.Social.TwentyThree.Models.Sites {
             Domain = json.GetString("domain")!;
             SecureDomain = json.GetString("secure_domain")!;
             SiteName = json.GetString("site_name")!;
+            SiteKey = json.GetRequiredString("site_key");
         }
 
         #endregion
