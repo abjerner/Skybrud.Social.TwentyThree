@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
@@ -39,8 +38,8 @@ namespace Skybrud.Social.TwentyThree.Models.OEmbed {
             Duration = json.GetDouble("duration", TimeSpan.FromSeconds);
         }
 
-        public static new TwentyThreeOEmbedVideo? Parse([NotNullIfNotNull(nameof(json))] JObject? json) {
-            return json == null ? null : new TwentyThreeOEmbedVideo(json);
+        public static new TwentyThreeOEmbedVideo Parse(JObject json) {
+            return new TwentyThreeOEmbedVideo(json);
         }
 
     }

@@ -45,10 +45,10 @@ namespace Skybrud.Social.TwentyThree.Models.Sites {
         /// </summary>
         /// <param name="json">The <see cref="JObject"/> to be parsed.</param>
         protected TwentyThreeSite(JObject json) : base(json) {
-            SiteId = json.GetString("site_id")!;
-            Domain = json.GetString("domain")!;
-            SecureDomain = json.GetString("secure_domain")!;
-            SiteName = json.GetString("site_name")!;
+            SiteId = json.GetRequiredString("site_id");
+            Domain = json.GetRequiredString("domain");
+            SecureDomain = json.GetRequiredString("secure_domain");
+            SiteName = json.GetRequiredString("site_name");
             SiteKey = json.GetRequiredString("site_key");
         }
 

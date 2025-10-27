@@ -83,6 +83,10 @@ namespace Skybrud.Social.TwentyThree.Models.Photos {
 
         public IReadOnlyList<string> Tags { get; }
 
+        public string? AlbumId { get; }
+
+        public string? AlbumTitle { get; }
+
         #endregion
 
         #region Constructors
@@ -93,7 +97,7 @@ namespace Skybrud.Social.TwentyThree.Models.Photos {
         /// <param name="json">The <see cref="JObject"/> to be parsed.</param>
         protected TwentyThreePhoto(JObject json) : base(json) {
             try {
-                PhotoId = json.GetString("photo_id")!;
+                PhotoId = json.GetRequiredString("photo_id");
                 Title = json.GetString("title")!;
                 Token = json.GetString("token")!;
                 IsPublished = json.GetString("published_p", StringUtils.ParseBoolean);
@@ -124,6 +128,8 @@ namespace Skybrud.Social.TwentyThree.Models.Photos {
                 Tags = json.GetStringArray("tags");
                 Thumbnails = new[] { Original, Quad16, Quad50, Quad75, Quad100, Medium, Portrait, Standard, Large }.Where(x => x != null).ToArray()!;
                 VideoFormats = new[] { VideoMedium, VideoHd, Video1080p, Video4K, VideoMobileH263Amr, VideoMobileH263Aac, VideoMobileMpeg4Amr, VideoMobileHigh }.Where(x => x != null).ToArray()!;
+                AlbumId = json.GetString("album_id");
+                AlbumTitle = json.GetString("album_title");
             } catch (Exception ex) {
                 throw new TwentyThreeJsonParseException("Failed parsing photo from JSON.", json, ex);
             }
@@ -138,8 +144,8 @@ namespace Skybrud.Social.TwentyThree.Models.Photos {
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="TwentyThreePhoto"/>.</returns>
-        public static TwentyThreePhoto? Parse([NotNullIfNotNull(nameof(json))] JObject? json) {
-            return json == null ? null : new TwentyThreePhoto(json);
+        public static TwentyThreePhoto Parse(JObject json) {
+            return new TwentyThreePhoto(json);
         }
 
         #endregion

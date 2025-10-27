@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
 #pragma warning disable CS1591
@@ -32,8 +31,8 @@ namespace Skybrud.Social.TwentyThree.Models.OEmbed {
             Height = json.GetInt32("height");
         }
 
-        public static new TwentyThreeOEmbedPhoto? Parse([NotNullIfNotNull(nameof(json))] JObject? json) {
-            return json == null ? null : new TwentyThreeOEmbedPhoto(json);
+        public static new TwentyThreeOEmbedPhoto Parse(JObject json) {
+            return new TwentyThreeOEmbedPhoto(json);
         }
 
     }

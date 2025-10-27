@@ -39,8 +39,8 @@ namespace Skybrud.Social.TwentyThree.Models.Tags {
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="TwentyThreeTagList"/>.</returns>
-        public static TwentyThreeTagList? Parse([NotNullIfNotNull(nameof(json))] JObject? json) {
-            return json == null ? null : new TwentyThreeTagList(json);
+        public static TwentyThreeTagList? Parse(JObject json) {
+            return new TwentyThreeTagList(json);
         }
 
         #endregion

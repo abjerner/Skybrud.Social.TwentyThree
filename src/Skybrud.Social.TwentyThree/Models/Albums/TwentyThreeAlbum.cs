@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
 namespace Skybrud.Social.TwentyThree.Models.Albums {
@@ -49,8 +48,8 @@ namespace Skybrud.Social.TwentyThree.Models.Albums {
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="TwentyThreeAlbum"/>.</returns>
-        public static TwentyThreeAlbum? Parse([NotNullIfNotNull(nameof(json))] JObject? json) {
-            return json == null ? null : new TwentyThreeAlbum(json);
+        public static TwentyThreeAlbum Parse(JObject json) {
+            return new TwentyThreeAlbum(json);
         }
 
         #endregion

@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
-using System.Diagnostics.CodeAnalysis;
 
 #pragma warning disable CS1591
 
@@ -45,8 +44,8 @@ namespace Skybrud.Social.TwentyThree.Models {
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="TwentyThreeError"/>.</returns>
-        public static TwentyThreeError? Parse([NotNullIfNotNull(nameof(json))] JObject? json) {
-            return json == null ? null : new TwentyThreeError(json);
+        public static TwentyThreeError Parse(JObject json) {
+            return new TwentyThreeError(json);
         }
 
         #endregion

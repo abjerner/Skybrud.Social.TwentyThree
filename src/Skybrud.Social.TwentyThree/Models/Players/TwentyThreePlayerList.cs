@@ -39,8 +39,8 @@ namespace Skybrud.Social.TwentyThree.Models.Players {
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="TwentyThreePlayerList"/>.</returns>
-        public static TwentyThreePlayerList? Parse([NotNullIfNotNull(nameof(json))] JObject? json) {
-            return json == null ? null : new TwentyThreePlayerList(json);
+        public static TwentyThreePlayerList Parse(JObject json) {
+            return new TwentyThreePlayerList(json);
         }
 
         #endregion

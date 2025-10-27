@@ -38,8 +38,8 @@ namespace Skybrud.Social.TwentyThree.Models.Albums {
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="TwentyThreeAlbumList"/>.</returns>
-        public static TwentyThreeAlbumList? Parse([NotNullIfNotNull(nameof(json))] JObject? json) {
-            return json == null ? null : new TwentyThreeAlbumList(json);
+        public static TwentyThreeAlbumList Parse(JObject json) {
+            return new TwentyThreeAlbumList(json);
         }
 
         #endregion

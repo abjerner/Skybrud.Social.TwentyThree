@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
 namespace Skybrud.Social.TwentyThree.Models.Players {
@@ -49,8 +48,8 @@ namespace Skybrud.Social.TwentyThree.Models.Players {
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="TwentyThreePlayer"/>.</returns>
-        public static TwentyThreePlayer? Parse([NotNullIfNotNull(nameof(json))] JObject? json) {
-            return json == null ? null : new TwentyThreePlayer(json);
+        public static TwentyThreePlayer Parse(JObject json) {
+            return new TwentyThreePlayer(json);
         }
 
         #endregion
