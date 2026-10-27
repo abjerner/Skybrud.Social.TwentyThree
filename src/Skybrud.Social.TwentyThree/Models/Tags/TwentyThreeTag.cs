@@ -3,50 +3,48 @@ using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
 #pragma warning disable CS1591
 
-namespace Skybrud.Social.TwentyThree.Models.Tags {
+namespace Skybrud.Social.TwentyThree.Models.Tags;
+
+/// <summary>
+/// Class representing a TwentyThree tag.
+/// </summary>
+public class TwentyThreeTag : TwentyThreeObject {
+
+    #region Properties
+
+    public string Tag { get; }
+
+    public int Count { get; }
+
+    public string Url { get; }
+
+    #endregion
+
+    #region Constructors
 
     /// <summary>
-    /// Class representing a TwentyThree tag.
+    /// Initializes a new instance of <see cref="TwentyThreeTag"/> parsed from the specified <paramref name="json"/> object.
     /// </summary>
-    public class TwentyThreeTag : TwentyThreeObject {
-
-        #region Properties
-
-        public string Tag { get; }
-
-        public int Count { get; }
-
-        public string Url { get; }
-
-        #endregion
-
-        #region Constructors
-
-        /// <summary>
-        /// Initializes a new instance of <see cref="TwentyThreeTag"/> parsed from the specified <paramref name="json"/> object.
-        /// </summary>
-        /// <param name="json">The <see cref="JObject"/> to be parsed.</param>
-        protected TwentyThreeTag(JObject json) : base(json) {
-            Tag = json.GetString("tag")!;
-            Count = json.GetInt32("count");
-            Url = json.GetString("url")!;
-        }
-
-        #endregion
-
-        #region Static methods
-
-        /// <summary>
-        /// Gets an instance of <see cref="TwentyThreeTag"/> from the specified <paramref name="json"/> object.
-        /// </summary>
-        /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
-        /// <returns>An instance of <see cref="TwentyThreeTag"/>.</returns>
-        public static TwentyThreeTag Parse(JObject json) {
-            return new TwentyThreeTag(json);
-        }
-
-        #endregion
-
+    /// <param name="json">The <see cref="JObject"/> to be parsed.</param>
+    protected TwentyThreeTag(JObject json) : base(json) {
+        Tag = json.GetString("tag")!;
+        Count = json.GetInt32("count");
+        Url = json.GetString("url")!;
     }
+
+    #endregion
+
+    #region Static methods
+
+    /// <summary>
+    /// Gets an instance of <see cref="TwentyThreeTag"/> from the specified <paramref name="json"/> object.
+    /// </summary>
+    /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
+    /// <returns>An instance of <see cref="TwentyThreeTag"/>.</returns>
+    public static TwentyThreeTag Parse(JObject json) {
+        return new TwentyThreeTag(json);
+    }
+
+    #endregion
 
 }

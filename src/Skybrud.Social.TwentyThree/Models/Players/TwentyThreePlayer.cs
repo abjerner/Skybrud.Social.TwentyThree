@@ -1,59 +1,57 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
-namespace Skybrud.Social.TwentyThree.Models.Players {
+namespace Skybrud.Social.TwentyThree.Models.Players;
+
+/// <summary>
+/// Class representing a TwentyThree player.
+/// </summary>
+public class TwentyThreePlayer : TwentyThreeObject {
+
+    #region Properties
 
     /// <summary>
-    /// Class representing a TwentyThree player.
+    /// Gets the ID of the player.
     /// </summary>
-    public class TwentyThreePlayer : TwentyThreeObject {
+    public string PlayerId { get; }
 
-        #region Properties
+    /// <summary>
+    /// Gets the name of the player.
+    /// </summary>
+    public string PlayerName { get; }
 
-        /// <summary>
-        /// Gets the ID of the player.
-        /// </summary>
-        public string PlayerId { get; }
+    /// <summary>
+    /// Gets whether the player is the default player.
+    /// </summary>
+    public bool IsDefault { get; }
 
-        /// <summary>
-        /// Gets the name of the player.
-        /// </summary>
-        public string PlayerName { get; }
+    #endregion
 
-        /// <summary>
-        /// Gets whether the player is the default player.
-        /// </summary>
-        public bool IsDefault { get; }
+    #region Constructors
 
-        #endregion
-
-        #region Constructors
-
-        /// <summary>
-        /// Initializes a new instance of <see cref="TwentyThreePlayer"/> parsed from the specified <paramref name="json"/> object.
-        /// </summary>
-        /// <param name="json">The <see cref="JObject"/> to be parsed.</param>
-        protected TwentyThreePlayer(JObject json) : base(json) {
-            PlayerId = json.GetString("player_id")!;
-            PlayerName = json.GetString("player_name")!;
-            IsDefault = json.GetBoolean("default_p");
-        }
-
-        #endregion
-
-        #region Static methods
-
-        /// <summary>
-        /// Gets an instance of <see cref="TwentyThreePlayer"/> from the specified <paramref name="json"/> object.
-        /// </summary>
-        /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
-        /// <returns>An instance of <see cref="TwentyThreePlayer"/>.</returns>
-        public static TwentyThreePlayer Parse(JObject json) {
-            return new TwentyThreePlayer(json);
-        }
-
-        #endregion
-
+    /// <summary>
+    /// Initializes a new instance of <see cref="TwentyThreePlayer"/> parsed from the specified <paramref name="json"/> object.
+    /// </summary>
+    /// <param name="json">The <see cref="JObject"/> to be parsed.</param>
+    protected TwentyThreePlayer(JObject json) : base(json) {
+        PlayerId = json.GetString("player_id")!;
+        PlayerName = json.GetString("player_name")!;
+        IsDefault = json.GetBoolean("default_p");
     }
+
+    #endregion
+
+    #region Static methods
+
+    /// <summary>
+    /// Gets an instance of <see cref="TwentyThreePlayer"/> from the specified <paramref name="json"/> object.
+    /// </summary>
+    /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
+    /// <returns>An instance of <see cref="TwentyThreePlayer"/>.</returns>
+    public static TwentyThreePlayer Parse(JObject json) {
+        return new TwentyThreePlayer(json);
+    }
+
+    #endregion
 
 }

@@ -1,13 +1,11 @@
 ﻿#pragma warning disable CS1591
 
-namespace Skybrud.Social.TwentyThree.Options.Tags {
+namespace Skybrud.Social.TwentyThree.Options.Tags;
 
-    public enum TwentyThreeTagSortField {
+public enum TwentyThreeTagSortField {
 
-        Tag,
+    Tag,
 
-        Count
-
-    }
+    Count
 
 }

@@ -2,47 +2,45 @@
 using Skybrud.Essentials.Http.Collections;
 using Skybrud.Essentials.Http.Options;
 
-namespace Skybrud.Social.TwentyThree.Options.Players {
+namespace Skybrud.Social.TwentyThree.Options.Players;
+
+/// <summary>
+/// Options for getting a list of players.
+/// </summary>
+/// <see>
+///     <cref>https://www.twentythree.com/api/player-list</cref>
+/// </see>
+public class TwentyThreeGetPlayersOptions : IHttpRequestOptions {
+
+    #region Properties
 
     /// <summary>
-    /// Options for getting a list of players.
+    /// Gets or sets the page offset of the request.
     /// </summary>
-    /// <see>
-    ///     <cref>https://www.twentythree.com/api/player-list</cref>
-    /// </see>
-    public class TwentyThreeGetPlayersOptions : IHttpRequestOptions {
+    public int? Page { get; set; }
 
-        #region Properties
+    /// <summary>
+    /// Gets or sets the maximum amount of photos to returned per page.
+    /// </summary>
+    public int? Size { get; set; }
 
-        /// <summary>
-        /// Gets or sets the page offset of the request.
-        /// </summary>
-        public int? Page { get; set; }
+    #endregion
 
-        /// <summary>
-        /// Gets or sets the maximum amount of photos to returned per page.
-        /// </summary>
-        public int? Size { get; set; }
+    #region Member methods
 
-        #endregion
+    /// <inheritdoc />
+    public virtual IHttpRequest GetRequest() {
 
-        #region Member methods
+        IHttpQueryString query = new HttpQueryString();
 
-        /// <inheritdoc />
-        public virtual IHttpRequest GetRequest() {
+        if (Page is not null) query.Add("p", Page);
+        if (Size is not null) query.Add("size", Size);
 
-            IHttpQueryString query = new HttpQueryString();
-
-            if (Page is not null) query.Add("p", Page);
-            if (Size is not null) query.Add("size", Size);
-
-            // Initialize a new request
-            return HttpRequest.Get("/api/player/list", query);
-
-        }
-
-        #endregion
+        // Initialize a new request
+        return HttpRequest.Get("/api/player/list", query);
 
     }
+
+    #endregion
 
 }

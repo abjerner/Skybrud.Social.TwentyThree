@@ -1,61 +1,59 @@
 ﻿using Skybrud.Social.TwentyThree.Options.Photos;
 using Skybrud.Social.TwentyThree.Responses.Photos;
 
-namespace Skybrud.Social.TwentyThree.Endpoints {
+namespace Skybrud.Social.TwentyThree.Endpoints;
+
+/// <summary>
+/// Class representing the implementation of the <strong>Photos</strong> endpoint.
+/// </summary>
+public class TwentyThreePhotosEndpoint {
+
+    #region Properties
 
     /// <summary>
-    /// Class representing the implementation of the <strong>Photos</strong> endpoint.
+    /// Gets a reference to the TwentyThree service.
     /// </summary>
-    public class TwentyThreePhotosEndpoint {
+    public TwentyThreeHttpService Service { get; }
 
-        #region Properties
+    /// <summary>
+    /// Gets a reference to the raw <strong>Photos</strong> endpoint.
+    /// </summary>
+    public TwentyThreePhotosRawEndpoint Raw => Service.Client.Photos;
 
-        /// <summary>
-        /// Gets a reference to the TwentyThree service.
-        /// </summary>
-        public TwentyThreeHttpService Service { get; }
+    #endregion
 
-        /// <summary>
-        /// Gets a reference to the raw <strong>Photos</strong> endpoint.
-        /// </summary>
-        public TwentyThreePhotosRawEndpoint Raw => Service.Client.Photos;
+    #region Constructors
 
-        #endregion
-
-        #region Constructors
-
-        internal TwentyThreePhotosEndpoint(TwentyThreeHttpService service) {
-            Service = service;
-        }
-
-        #endregion
-
-        #region Member methods
-
-        /// <summary>
-        /// Returns a list of photos or videos.
-        /// </summary>
-        /// <returns>An instance of <see cref="TwentyThreePhotoListResponse"/> representing the response.</returns>
-        /// <see>
-        ///     <cref>https://www.twentythree.net/api/photo-list</cref>
-        /// </see>
-        public TwentyThreePhotoListResponse GetList() {
-            return new TwentyThreePhotoListResponse(Raw.GetList());
-        }
-
-        /// <summary>
-        /// Returns a list of photos or videos.
-        /// </summary>
-        /// <returns>An instance of <see cref="TwentyThreePhotoListResponse"/> representing the response.</returns>
-        /// <see>
-        ///     <cref>https://www.twentythree.net/api/photo-list</cref>
-        /// </see>
-        public TwentyThreePhotoListResponse GetList(TwentyThreeGetPhotosOptions options) {
-            return new TwentyThreePhotoListResponse(Raw.GetList(options));
-        }
-
-        #endregion
-
+    internal TwentyThreePhotosEndpoint(TwentyThreeHttpService service) {
+        Service = service;
     }
+
+    #endregion
+
+    #region Member methods
+
+    /// <summary>
+    /// Returns a list of photos or videos.
+    /// </summary>
+    /// <returns>An instance of <see cref="TwentyThreePhotoListResponse"/> representing the response.</returns>
+    /// <see>
+    ///     <cref>https://www.twentythree.net/api/photo-list</cref>
+    /// </see>
+    public TwentyThreePhotoListResponse GetList() {
+        return new TwentyThreePhotoListResponse(Raw.GetList());
+    }
+
+    /// <summary>
+    /// Returns a list of photos or videos.
+    /// </summary>
+    /// <returns>An instance of <see cref="TwentyThreePhotoListResponse"/> representing the response.</returns>
+    /// <see>
+    ///     <cref>https://www.twentythree.net/api/photo-list</cref>
+    /// </see>
+    public TwentyThreePhotoListResponse GetList(TwentyThreeGetPhotosOptions options) {
+        return new TwentyThreePhotoListResponse(Raw.GetList(options));
+    }
+
+    #endregion
 
 }

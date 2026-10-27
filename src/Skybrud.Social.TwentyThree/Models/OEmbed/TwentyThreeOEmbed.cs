@@ -5,70 +5,68 @@ using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
 #pragma warning disable CS1591
 
-namespace Skybrud.Social.TwentyThree.Models.OEmbed {
+namespace Skybrud.Social.TwentyThree.Models.OEmbed;
 
-    /// <summary>
-    /// OEmbed details of a TwentyThree resource.
-    /// </summary>
-    /// <see>
-    ///     <cref>https://oembed.com/</cref>
-    /// </see>
-    public class TwentyThreeOEmbed : TwentyThreeObject {
+/// <summary>
+/// OEmbed details of a TwentyThree resource.
+/// </summary>
+/// <see>
+///     <cref>https://oembed.com/</cref>
+/// </see>
+public class TwentyThreeOEmbed : TwentyThreeObject {
 
-        public string Type { get; }
+    public string Type { get; }
 
-        public float Version { get; }
+    public float Version { get; }
 
-        public string Title { get; }
+    public string Title { get; }
 
-        public string Url { get; }
+    public string Url { get; }
 
-        public string AuthorName { get; }
+    public string AuthorName { get; }
 
-        public string AuthorUrl { get; }
+    public string AuthorUrl { get; }
 
-        public string ProviderName { get; }
+    public string ProviderName { get; }
 
-        public string ProviderUrl { get; }
+    public string ProviderUrl { get; }
 
-        public TimeSpan CacheAge { get; }
+    public TimeSpan CacheAge { get; }
 
-        public string ThumbnailUrl { get; }
+    public string ThumbnailUrl { get; }
 
-        public int ThumbnailWidth { get; }
+    public int ThumbnailWidth { get; }
 
-        public int ThumbnailHeight { get; }
+    public int ThumbnailHeight { get; }
 
-        protected TwentyThreeOEmbed(JObject json) : base(json) {
-            Type = json.GetString("type")!;
-            Version = json.GetFloat("version");
-            Title = json.GetString("title")!;
-            Url = json.GetString("url")!;
-            AuthorName = json.GetString("author_name")!;
-            AuthorUrl = json.GetString("author_url")!;
-            ProviderName = json.GetString("provider_name")!;
-            ProviderUrl = json.GetString("provider_url")!;
-            CacheAge = json.GetDouble("cache_age", TimeSpan.FromSeconds);
-            ThumbnailWidth = json.GetInt32("thumbnail_width");
-            ThumbnailHeight = json.GetInt32("thumbnail_height");
-            ThumbnailUrl = json.GetString("thumbnail_url")!;
-        }
+    protected TwentyThreeOEmbed(JObject json) : base(json) {
+        Type = json.GetString("type")!;
+        Version = json.GetFloat("version");
+        Title = json.GetString("title")!;
+        Url = json.GetString("url")!;
+        AuthorName = json.GetString("author_name")!;
+        AuthorUrl = json.GetString("author_url")!;
+        ProviderName = json.GetString("provider_name")!;
+        ProviderUrl = json.GetString("provider_url")!;
+        CacheAge = json.GetDouble("cache_age", TimeSpan.FromSeconds);
+        ThumbnailWidth = json.GetInt32("thumbnail_width");
+        ThumbnailHeight = json.GetInt32("thumbnail_height");
+        ThumbnailUrl = json.GetString("thumbnail_url")!;
+    }
 
-        public static TwentyThreeOEmbed? Parse([NotNullIfNotNull(nameof(json))] JObject? json) {
+    public static TwentyThreeOEmbed? Parse([NotNullIfNotNull(nameof(json))] JObject? json) {
 
-            if (json == null) return null;
+        if (json == null) return null;
 
-            string? type = json.GetString("type");
+        string? type = json.GetString("type");
 
-            return type switch {
-                null => throw new Exception("No OEmbed type specified."),
-                "" => throw new Exception("No OEmbed type specified."),
-                "video" => TwentyThreeOEmbedVideo.Parse(json),
-                "photo" => TwentyThreeOEmbedPhoto.Parse(json),
-                _ => throw new Exception($"Unsupported OEmbed type: {type}")
-            };
-
-        }
+        return type switch {
+            null => throw new Exception("No OEmbed type specified."),
+            "" => throw new Exception("No OEmbed type specified."),
+            "video" => TwentyThreeOEmbedVideo.Parse(json),
+            "photo" => TwentyThreeOEmbedPhoto.Parse(json),
+            _ => throw new Exception($"Unsupported OEmbed type: {type}")
+        };
 
     }
 

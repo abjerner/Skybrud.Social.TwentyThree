@@ -1,16 +1,14 @@
 #pragma warning disable CS1591
 
-namespace Skybrud.Social.TwentyThree.Options.Photos {
+namespace Skybrud.Social.TwentyThree.Options.Photos;
 
-    /// <summary>
-    /// Enum class indicating the type of videos to be returned.
-    /// </summary>
-    public enum TwentyThreeVideoParameter {
+/// <summary>
+/// Enum class indicating the type of videos to be returned.
+/// </summary>
+public enum TwentyThreeVideoParameter {
 
-        OnlyVideos,
+    OnlyVideos,
 
-        IgnoreVideos
-
-    }
+    IgnoreVideos
 
 }

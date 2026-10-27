@@ -1,30 +1,28 @@
-﻿namespace Skybrud.Social.TwentyThree.Options.Embed {
+﻿namespace Skybrud.Social.TwentyThree.Options.Embed;
+
+/// <summary>
+/// Enum class indicating what should happen when a video ends.
+/// </summary>
+public enum TwentyThreePhotoEmbedEndOn {
 
     /// <summary>
-    /// Enum class indicating what should happen when a video ends.
+    /// Show sharing.
     /// </summary>
-    public enum TwentyThreePhotoEmbedEndOn {
+    Share,
 
-        /// <summary>
-        /// Show sharing.
-        /// </summary>
-        Share,
+    /// <summary>
+    /// Show recommended videos.
+    /// </summary>
+    Browse,
 
-        /// <summary>
-        /// Show recommended videos.
-        /// </summary>
-        Browse,
+    /// <summary>
+    /// Loop through recommendations.
+    /// </summary>
+    Loop,
 
-        /// <summary>
-        /// Loop through recommendations.
-        /// </summary>
-        Loop,
-
-        /// <summary>
-        /// Show thumbnail.
-        /// </summary>
-        Thumbnail
-
-    }
+    /// <summary>
+    /// Show thumbnail.
+    /// </summary>
+    Thumbnail
 
 }

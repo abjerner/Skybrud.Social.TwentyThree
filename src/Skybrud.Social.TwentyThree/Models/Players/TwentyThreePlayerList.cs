@@ -4,47 +4,45 @@ using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Social.TwentyThree.Models.Photos;
 
-namespace Skybrud.Social.TwentyThree.Models.Players {
+namespace Skybrud.Social.TwentyThree.Models.Players;
+
+/// <summary>
+/// Class representing a paginated list of <see cref="TwentyThreePlayer"/>.
+/// </summary>
+public class TwentyThreePlayerList : TwentyThreeList {
+
+    #region Properties
 
     /// <summary>
-    /// Class representing a paginated list of <see cref="TwentyThreePlayer"/>.
+    /// Gets a reference to the individual players of the list.
     /// </summary>
-    public class TwentyThreePlayerList : TwentyThreeList {
+    public IReadOnlyList<TwentyThreePlayer> Players { get; }
 
-        #region Properties
+    #endregion
 
-        /// <summary>
-        /// Gets a reference to the individual players of the list.
-        /// </summary>
-        public IReadOnlyList<TwentyThreePlayer> Players { get; }
+    #region Constructors
 
-        #endregion
-
-        #region Constructors
-
-        /// <summary>
-        /// Initializes a new instance of <see cref="TwentyThreePhotoList"/> parsed from the specified <paramref name="json"/> object.
-        /// </summary>
-        /// <param name="json">The <see cref="JObject"/> to be parsed.</param>
-        protected TwentyThreePlayerList(JObject json) : base(json) {
-            Players = json.GetArrayItems("players", TwentyThreePlayer.Parse);
-        }
-
-        #endregion
-
-        #region Static methods
-
-        /// <summary>
-        /// Gets an instance of <see cref="TwentyThreePlayerList"/> from the specified <paramref name="json"/> object.
-        /// </summary>
-        /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
-        /// <returns>An instance of <see cref="TwentyThreePlayerList"/>.</returns>
-        public static TwentyThreePlayerList Parse(JObject json) {
-            return new TwentyThreePlayerList(json);
-        }
-
-        #endregion
-
+    /// <summary>
+    /// Initializes a new instance of <see cref="TwentyThreePhotoList"/> parsed from the specified <paramref name="json"/> object.
+    /// </summary>
+    /// <param name="json">The <see cref="JObject"/> to be parsed.</param>
+    protected TwentyThreePlayerList(JObject json) : base(json) {
+        Players = json.GetArrayItems("players", TwentyThreePlayer.Parse);
     }
+
+    #endregion
+
+    #region Static methods
+
+    /// <summary>
+    /// Gets an instance of <see cref="TwentyThreePlayerList"/> from the specified <paramref name="json"/> object.
+    /// </summary>
+    /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
+    /// <returns>An instance of <see cref="TwentyThreePlayerList"/>.</returns>
+    public static TwentyThreePlayerList Parse(JObject json) {
+        return new TwentyThreePlayerList(json);
+    }
+
+    #endregion
 
 }

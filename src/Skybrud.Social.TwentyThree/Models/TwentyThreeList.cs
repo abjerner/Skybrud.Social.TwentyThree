@@ -3,58 +3,56 @@ using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Social.TwentyThree.Models.Photos;
 using Skybrud.Social.TwentyThree.Models.Sites;
 
-namespace Skybrud.Social.TwentyThree.Models {
+namespace Skybrud.Social.TwentyThree.Models;
+
+/// <summary>
+/// Class representing a paginated list.
+/// </summary>
+public class TwentyThreeList : TwentyThreeObject {
+
+    #region Properties
 
     /// <summary>
-    /// Class representing a paginated list.
+    /// Gets the page number of the list.
     /// </summary>
-    public class TwentyThreeList : TwentyThreeObject {
+    public int Page { get; }
 
-        #region Properties
+    /// <summary>
+    /// Gets the size of the list (maximum amount of items returned per page).
+    /// </summary>
+    public int Size { get; }
 
-        /// <summary>
-        /// Gets the page number of the list.
-        /// </summary>
-        public int Page { get; }
+    /// <summary>
+    /// Gets the current offset of the list.
+    /// </summary>
+    public int Offset { get; }
 
-        /// <summary>
-        /// Gets the size of the list (maximum amount of items returned per page).
-        /// </summary>
-        public int Size { get; }
+    /// <summary>
+    /// Gets the total amount of items in the list.
+    /// </summary>
+    public int TotalCount { get; }
 
-        /// <summary>
-        /// Gets the current offset of the list.
-        /// </summary>
-        public int Offset { get; }
+    /// <summary>
+    /// Gets a reference to the parent site.
+    /// </summary>
+    public TwentyThreeSite Site { get; }
 
-        /// <summary>
-        /// Gets the total amount of items in the list.
-        /// </summary>
-        public int TotalCount { get; }
+    #endregion
 
-        /// <summary>
-        /// Gets a reference to the parent site.
-        /// </summary>
-        public TwentyThreeSite Site { get; }
+    #region Constructors
 
-        #endregion
-
-        #region Constructors
-
-        /// <summary>
-        /// Initializes a new instance of <see cref="TwentyThreePhotoList"/> parsed from the specified <paramref name="json"/> object.
-        /// </summary>
-        /// <param name="json">The <see cref="JObject"/> to be parsed.</param>
-        protected TwentyThreeList(JObject json) : base(json) {
-            Page = json.GetInt32("p");
-            Size = json.GetInt32("size");
-            Offset = json.GetInt32("offset");
-            TotalCount = json.GetInt32("total_count");
-            Site = json.GetObject("site", TwentyThreeSite.Parse)!;
-        }
-
-        #endregion
-
+    /// <summary>
+    /// Initializes a new instance of <see cref="TwentyThreePhotoList"/> parsed from the specified <paramref name="json"/> object.
+    /// </summary>
+    /// <param name="json">The <see cref="JObject"/> to be parsed.</param>
+    protected TwentyThreeList(JObject json) : base(json) {
+        Page = json.GetInt32("p");
+        Size = json.GetInt32("size");
+        Offset = json.GetInt32("offset");
+        TotalCount = json.GetInt32("total_count");
+        Site = json.GetObject("site", TwentyThreeSite.Parse)!;
     }
+
+    #endregion
 
 }

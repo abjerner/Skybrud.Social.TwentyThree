@@ -5,72 +5,70 @@ using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Social.TwentyThree.Exceptions;
 using Skybrud.Social.TwentyThree.Models;
 
-namespace Skybrud.Social.TwentyThree.Responses {
+namespace Skybrud.Social.TwentyThree.Responses;
+
+/// <summary>
+/// Class representing a response from the TwentyThree API.
+/// </summary>
+public class TwentyThreeResponse : HttpResponseBase {
+
+    #region Constructors
 
     /// <summary>
-    /// Class representing a response from the TwentyThree API.
+    /// Initializes a new instance based on the specified <paramref name="response"/>.
     /// </summary>
-    public class TwentyThreeResponse : HttpResponseBase {
+    /// <param name="response">The instance of <see cref="IHttpResponse"/> representing the raw response.</param>
+    protected TwentyThreeResponse(IHttpResponse response) : base(response) { }
 
-        #region Constructors
+    #endregion
 
-        /// <summary>
-        /// Initializes a new instance based on the specified <paramref name="response"/>.
-        /// </summary>
-        /// <param name="response">The instance of <see cref="IHttpResponse"/> representing the raw response.</param>
-        protected TwentyThreeResponse(IHttpResponse response) : base(response) { }
+    #region Static methods
 
-        #endregion
+    /// <summary>
+    /// Validates the specified <paramref name="response"/>.
+    /// </summary>
+    /// <param name="response">The response to be validated.</param>
+    /// <param name="body">An instance of <see cref="JObject"/> representing the response body.</param>
+    public static void ValidateResponse(IHttpResponse response, out JObject body) {
 
-        #region Static methods
+        // The API always returns a 200 status code - even for errors
 
-        /// <summary>
-        /// Validates the specified <paramref name="response"/>.
-        /// </summary>
-        /// <param name="response">The response to be validated.</param>
-        /// <param name="body">An instance of <see cref="JObject"/> representing the response body.</param>
-        public static void ValidateResponse(IHttpResponse response, out JObject body) {
+        // Parse the response body
+        body = JsonUtils.ParseJsonObject(response.Body);
 
-            // The API always returns a 200 status code - even for errors
+        if (body.GetString("status") == "ok") return;
 
-            // Parse the response body
-            body = JsonUtils.ParseJsonObject(response.Body);
-
-            if (body.GetString("status") == "ok") return;
-
-            // Throw the exception
-            throw new TwentyThreeHttpException(response, TwentyThreeError.Parse(body));
-
-        }
-
-        #endregion
+        // Throw the exception
+        throw new TwentyThreeHttpException(response, TwentyThreeError.Parse(body));
 
     }
 
+    #endregion
+
+}
+
+/// <summary>
+/// Class representing a response from the TwentyThree API.
+/// </summary>
+public class TwentyThreeResponse<T> : TwentyThreeResponse {
+
+    #region Properties
+
     /// <summary>
-    /// Class representing a response from the TwentyThree API.
+    /// Gets the body of the response.
     /// </summary>
-    public class TwentyThreeResponse<T> : TwentyThreeResponse {
+    public T Body { get; protected set; } = default!;
 
-        #region Properties
+    #endregion
 
-        /// <summary>
-        /// Gets the body of the response.
-        /// </summary>
-        public T Body { get; protected set; } = default!;
+    #region Constructors
 
-        #endregion
+    /// <summary>
+    /// Initializes a new instance based on the specified <paramref name="response"/>.
+    /// </summary>
+    /// <param name="response">The instance of <see cref="IHttpResponse"/> representing the raw response.</param>
+    protected TwentyThreeResponse(IHttpResponse response) : base(response) { }
 
-        #region Constructors
-
-        /// <summary>
-        /// Initializes a new instance based on the specified <paramref name="response"/>.
-        /// </summary>
-        /// <param name="response">The instance of <see cref="IHttpResponse"/> representing the raw response.</param>
-        protected TwentyThreeResponse(IHttpResponse response) : base(response) { }
-
-        #endregion
-
-    }
+    #endregion
 
 }

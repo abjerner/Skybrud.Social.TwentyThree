@@ -1,61 +1,59 @@
 ﻿using Skybrud.Social.TwentyThree.Options.Albums;
 using Skybrud.Social.TwentyThree.Responses.Albums;
 
-namespace Skybrud.Social.TwentyThree.Endpoints {
+namespace Skybrud.Social.TwentyThree.Endpoints;
+
+/// <summary>
+/// Class representing the implementation of the <strong>Albums</strong> endpoint.
+/// </summary>
+public class TwentyThreeAlbumsEndpoint {
+
+    #region Properties
 
     /// <summary>
-    /// Class representing the implementation of the <strong>Albums</strong> endpoint.
+    /// Gets a reference to the TwentyThree service.
     /// </summary>
-    public class TwentyThreeAlbumsEndpoint {
+    public TwentyThreeHttpService Service { get; }
 
-        #region Properties
+    /// <summary>
+    /// Gets a reference to the raw <strong>Albums</strong> endpoint.
+    /// </summary>
+    public TwentyThreeAlbumsRawEndpoint Raw => Service.Client.Albums;
 
-        /// <summary>
-        /// Gets a reference to the TwentyThree service.
-        /// </summary>
-        public TwentyThreeHttpService Service { get; }
+    #endregion
 
-        /// <summary>
-        /// Gets a reference to the raw <strong>Albums</strong> endpoint.
-        /// </summary>
-        public TwentyThreeAlbumsRawEndpoint Raw => Service.Client.Albums;
+    #region Constructors
 
-        #endregion
-
-        #region Constructors
-
-        internal TwentyThreeAlbumsEndpoint(TwentyThreeHttpService service) {
-            Service = service;
-        }
-
-        #endregion
-
-        #region Member methods
-        
-        /// <summary>
-        /// Returns a list of albums.
-        /// </summary>
-        /// <returns>An instance of <see cref="TwentyThreeAlbumListResponse"/> representing the response.</returns>
-        /// <see>
-        ///     <cref>https://www.twentythree.com/api/album-list</cref>
-        /// </see>
-        public TwentyThreeAlbumListResponse GetList() {
-            return new TwentyThreeAlbumListResponse(Raw.GetList());
-        }
-
-        /// <summary>
-        /// Returns a list of albums.
-        /// </summary>
-        /// <returns>An instance of <see cref="TwentyThreeAlbumListResponse"/> representing the response.</returns>
-        /// <see>
-        ///     <cref>https://www.twentythree.com/api/album-list</cref>
-        /// </see>
-        public TwentyThreeAlbumListResponse GetList(TwentyThreeGetAlbumsOptions options) {
-            return new TwentyThreeAlbumListResponse(Raw.GetList(options));
-        }
-
-        #endregion
-
+    internal TwentyThreeAlbumsEndpoint(TwentyThreeHttpService service) {
+        Service = service;
     }
+
+    #endregion
+
+    #region Member methods
+
+    /// <summary>
+    /// Returns a list of albums.
+    /// </summary>
+    /// <returns>An instance of <see cref="TwentyThreeAlbumListResponse"/> representing the response.</returns>
+    /// <see>
+    ///     <cref>https://www.twentythree.com/api/album-list</cref>
+    /// </see>
+    public TwentyThreeAlbumListResponse GetList() {
+        return new TwentyThreeAlbumListResponse(Raw.GetList());
+    }
+
+    /// <summary>
+    /// Returns a list of albums.
+    /// </summary>
+    /// <returns>An instance of <see cref="TwentyThreeAlbumListResponse"/> representing the response.</returns>
+    /// <see>
+    ///     <cref>https://www.twentythree.com/api/album-list</cref>
+    /// </see>
+    public TwentyThreeAlbumListResponse GetList(TwentyThreeGetAlbumsOptions options) {
+        return new TwentyThreeAlbumListResponse(Raw.GetList(options));
+    }
+
+    #endregion
 
 }
