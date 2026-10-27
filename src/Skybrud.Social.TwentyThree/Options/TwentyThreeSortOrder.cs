@@ -6,7 +6,7 @@
 public enum TwentyThreeSortOrder {
 
     /// <summary>
-    /// Indicates that results should be sorted in asscending order.
+    /// Indicates that results should be sorted in ascending order.
     /// </summary>
     Ascending,
 

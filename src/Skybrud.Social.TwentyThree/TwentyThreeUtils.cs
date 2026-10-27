@@ -77,11 +77,11 @@ public static class TwentyThreeUtils {
     }
 
     public static string GetEmbedCode(string domain, string photoId, string token) {
-        return GetEmbedCode(domain, photoId, token, null, null, default);
+        return GetEmbedCode(domain, photoId, token, null, null, null);
     }
 
     public static string GetEmbedCode(string domain, string photoId, string token, string? playerId) {
-        return GetEmbedCode(domain, photoId, token, playerId, null, default);
+        return GetEmbedCode(domain, photoId, token, playerId, null, null);
     }
 
     public static string GetEmbedCode(string domain, string photoId, string token, string? playerId, bool? autoPlay, TwentyThreePhotoEmbedEndOn? endOn) {
@@ -96,7 +96,7 @@ public static class TwentyThreeUtils {
         string url = $"//{domain}/{playerId}.ihtml/player.html?token={token}&source=embed&photo%5fid={photoId}";
 
         if (autoPlay != null) url += "&autoPlay=1";
-        if (endOn != default) url += $"&endOn={endOn!.ToLower()}";
+        if (endOn != null) url += $"&endOn={endOn.ToLower()}";
 
         return $"<div style=\"width:100%; height:0; position: relative; padding-bottom:100.0%\"><iframe src=\"{url}\" style=\"width:100%; height:100%; position: absolute; top: 0; left: 0;\" frameborder=\"0\" border=\"0\" scrolling=\"no\" mozallowfullscreen=\"1\" webkitallowfullscreen=\"1\" allowfullscreen=\"1\" allow=\"autoplay; fullscreen\"></iframe></div>";
 

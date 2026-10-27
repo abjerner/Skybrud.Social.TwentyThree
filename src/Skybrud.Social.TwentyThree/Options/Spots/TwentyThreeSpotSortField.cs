@@ -3,7 +3,7 @@
 namespace Skybrud.Social.TwentyThree.Options.Spots;
 
 /// <summary>
-/// Enum class indiucating how albums should be sorted.
+/// Enum class indicating how albums should be sorted.
 /// </summary>
 public enum TwentyThreeSpotSortField {
 

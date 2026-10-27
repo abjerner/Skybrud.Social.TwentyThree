@@ -1,6 +1,5 @@
 ﻿using Skybrud.Essentials.Common;
 using Skybrud.Essentials.Http;
-using Skybrud.Essentials.Http.Collections;
 using Skybrud.Essentials.Http.OAuth;
 using Skybrud.Social.TwentyThree.Endpoints;
 
@@ -14,7 +13,7 @@ public class TwentyThreeOAuthClient : OAuthClient {
     #region Properties
 
     /// <summary>
-    /// Gets or sets the domain to be used for all API requests - eg. <c>videos.skybrud.dk</c>.
+    /// Gets or sets the domain to be used for all API requests - e.g. <c>videos.skybrud.dk</c>.
     /// </summary>
     public string? Domain { get; set; }
 
@@ -60,7 +59,7 @@ public class TwentyThreeOAuthClient : OAuthClient {
     /// <summary>
     /// Initializes a new instance of the <see cref="TwentyThreeOAuthClient"/> class.
     /// </summary>
-    /// <param name="consumerKey">The comsumer key of your application.</param>
+    /// <param name="consumerKey">The consumer key of your application.</param>
     /// <param name="consumerSecret">The consumer secret of your application.</param>
     /// <param name="token">The access token of the user.</param>
     /// <param name="tokenSecret">The access token secret of the user.</param>
@@ -110,7 +109,6 @@ public class TwentyThreeOAuthClient : OAuthClient {
         }
 
         // Append "raw" to the query string so we can get a proper JSON response
-        request.QueryString ??= new HttpQueryString();
         request.QueryString.Set("format", "json");
         request.QueryString.Set("raw", string.Empty);
 
